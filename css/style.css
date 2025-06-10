@@ -12,7 +12,7 @@
 /* Base Styles with Background Image */
 body {
   font-family: 'Poppins', 'Segoe UI', sans-serif;
-  background-image: url('../images/restaurant-bg.jpg');
+  background: url('../images/restaurant-bg.jpg');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
