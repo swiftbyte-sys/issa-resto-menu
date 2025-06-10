@@ -40,7 +40,7 @@ body::before {
 /* Header Styles */
 .header {
   text-align: center;
-  background: url('../images/header.jpg');
+  background: url('../images/header1.jpg');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
