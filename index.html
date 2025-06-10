@@ -4,7 +4,209 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Issa Resto - Digital Menu</title>
-  <link href="css/style.css" rel="stylesheet" />
+  <style>
+    :root {
+      --primary: #3B82F6;  /* SwiftByte blue */
+      --secondary: #10B981;  /* SwiftByte green */
+      --accent: #B76E79;  /* Restaurant accent */
+      --bg: #FFF9F0;
+      --text: #333;
+      --light: #FFF;
+    }
+    
+    body {
+      font-family: 'Poppins', 'Segoe UI', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      margin: 0;
+      padding-bottom: 100px; /* Space for footer + nav */
+      line-height: 1.6;
+    }
+
+    .header {
+      text-align: center;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: var(--light);
+      padding: 20px;
+      margin: 0;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    .logo {
+      font-weight: 700;
+      font-size: 1.2em;
+      color: var(--light);
+      display: inline-block;
+      margin-bottom: 5px;
+    }
+
+    .logo::before {
+      content: "⚡";
+      margin-right: 5px;
+    }
+
+    .section {
+      display: none;
+      padding: 20px;
+      animation: fadeIn 0.3s ease-in-out;
+    }
+
+    .section.active {
+      display: block;
+    }
+
+    .section h2 {
+      border-bottom: 2px solid var(--accent);
+      color: var(--accent);
+      padding-bottom: 5px;
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+    }
+
+    /* Sub-section styling */
+    .sub-section {
+      margin-bottom: 25px;
+    }
+
+    .sub-section h3 {
+      color: var(--primary);
+      margin: 15px 0 10px 0;
+      font-size: 1.1em;
+      display: flex;
+      align-items: center;
+    }
+
+    .item {
+      display: flex;
+      justify-content: space-between;
+      padding: 12px 0;
+      border-bottom: 1px dashed #DDD;
+      transition: transform 0.2s;
+    }
+
+    .item:hover {
+      transform: translateX(5px);
+    }
+
+    .item-name {
+      font-weight: 500;
+    }
+
+    .item-price {
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    /* Navigation */
+    .nav {
+      position: fixed;
+      bottom: 40px; /* Moved up to make space for footer below */
+      left: 0;
+      width: 100%;
+      background: var(--light);
+      border-top: 1px solid #EEE;
+      display: flex;
+      justify-content: space-around;
+      padding: 10px 0;
+      box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
+      z-index: 1000;
+    }
+
+    .nav-btn {
+      flex: 1;
+      background: none;
+      border: none;
+      padding: 8px 5px;
+      font-size: 14px;
+      color: #666;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: all 0.3s;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .nav-btn.active {
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    .nav-btn.active::after {
+      content: "";
+      position: absolute;
+      top: -10px;
+      width: 40px;
+      height: 3px;
+      background: var(--primary);
+      border-radius: 3px;
+    }
+
+    .nav-icon {
+      font-size: 20px;
+      margin-bottom: 3px;
+      transition: transform 0.3s;
+    }
+
+    .nav-btn.active .nav-icon {
+      transform: scale(1.1);
+    }
+
+    /* Footer - Now below navigation */
+    .footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      text-align: center;
+      font-size: 14px;
+      padding: 10px 0;
+      background: var(--light);
+      color: #666;
+      border-top: 1px solid #EEE;
+      z-index: 999;
+    }
+
+    .swiftbyte-brand {
+      color: var(--primary);
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Responsive */
+    @media (min-width: 768px) {
+      body {
+        max-width: 600px;
+        margin: 0 auto;
+        padding-bottom: 0;
+        box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        min-height: 100vh;
+      }
+      
+      .nav {
+        position: static;
+        border-top: none;
+        border-bottom: 1px solid #EEE;
+        box-shadow: none;
+        padding: 15px 0;
+        margin-top: 20px;
+      }
+      
+      .footer {
+        position: static;
+        width: auto;
+        margin-top: 20px;
+        border-top: 1px solid #EEE;
+      }
+    }
+  </style>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -16,25 +218,117 @@
 
 <div id="food" class="section active">
   <h2>🍽️ Food</h2>
-  <div class="item">
-    <span class="item-name">Fattouch</span>
-    <span class="item-price">$5</span>
+  
+  <div class="sub-section">
+    <h3>🥟 Appetizers</h3>
+    <div class="item">
+      <span class="item-name">Homos</span>
+      <span class="item-price">$5</span>
+    </div>
+    <div class="item">
+      <span class="item-name">Moutabal</span>
+      <span class="item-price">$5</span>
+    </div>
+    <div class="item">
+      <span class="item-name">Fried Kibbeh</span>
+      <span class="item-price">$6</span>
+    </div>
   </div>
-  <div class="item">
-    <span class="item-name">Taboule</span>
-    <span class="item-price">$5</span>
+
+  <div class="sub-section">
+    <h3>🥗 Salads</h3>
+    <div class="item">
+      <span class="item-name">Fattouch</span>
+      <span class="item-price">$5</span>
+    </div>
+    <div class="item">
+      <span class="item-name">Taboule</span>
+      <span class="item-price">$5</span>
+    </div>
+    <div class="item">
+      <span class="item-name">Greek Salad</span>
+      <span class="item-price">$6</span>
+    </div>
   </div>
-  <div class="item">
-    <span class="item-name">Homos</span>
-    <span class="item-price">$5</span>
+
+  <div class="sub-section">
+    <h3>🍱 Combos</h3>
+    <div class="item">
+      <span class="item-name">Mezze Platter</span>
+      <span class="item-price">$12</span>
+    </div>
+    <div class="item">
+      <span class="item-name">Chicken Combo</span>
+      <span class="item-price">$14</span>
+    </div>
+    <div class="item">
+      <span class="item-name">Family Feast</span>
+      <span class="item-price">$25</span>
+    </div>
   </div>
-  <div class="item">
-    <span class="item-name">Fries</span>
-    <span class="item-price">$4</span>
+
+  <div class="sub-section">
+    <h3>🥪 Sandwiches</h3>
+    <div class="item">
+      <span class="item-name">Chicken Shawarma</span>
+      <span class="item-price">$6</span>
+    </div>
+    <div class="item">
+      <span class="item-name">Beef Shawarma</span>
+      <span class="item-price">$7</span>
+    </div>
+    <div class="item">
+      <span class="item-name">Falafel Wrap</span>
+      <span class="item-price">$5</span>
+    </div>
   </div>
-  <div class="item">
-    <span class="item-name">Chicken Shawarma</span>
-    <span class="item-price">$8</span>
+
+  <div class="sub-section">
+    <h3>🍔 Burgers</h3>
+    <div class="item">
+      <span class="item-name">Classic Burger</span>
+      <span class="item-price">$8</span>
+    </div>
+    <div class="item">
+      <span class="item-name">Cheese Burger</span>
+      <span class="item-price">$9</span>
+    </div>
+    <div class="item">
+      <span class="item-name">Special Burger</span>
+      <span class="item-price">$10</span>
+    </div>
+  </div>
+
+  <div class="sub-section">
+    <h3>🍕 Pizza</h3>
+    <div class="item">
+      <span class="item-name">Margherita</span>
+      <span class="item-price">$10</span>
+    </div>
+    <div class="item">
+      <span class="item-name">Pepperoni</span>
+      <span class="item-price">$12</span>
+    </div>
+    <div class="item">
+      <span class="item-name">Special Mix</span>
+      <span class="item-price">$14</span>
+    </div>
+  </div>
+
+  <div class="sub-section">
+    <h3>🍛 Main Platters</h3>
+    <div class="item">
+      <span class="item-name">Grilled Chicken</span>
+      <span class="item-price">$12</span>
+    </div>
+    <div class="item">
+      <span class="item-name">Kebab Plate</span>
+      <span class="item-price">$14</span>
+    </div>
+    <div class="item">
+      <span class="item-name">Mixed Grill</span>
+      <span class="item-price">$16</span>
+    </div>
   </div>
 </div>
 
@@ -109,7 +403,6 @@
   </button>
 </div>
 
-<!-- Footer now below navigation -->
 <div class="footer">
   Menu designed by <a href="#" class="swiftbyte-brand">SwiftByte</a> | 📞 78986115
 </div>
