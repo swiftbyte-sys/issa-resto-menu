@@ -2,54 +2,31 @@
   --primary: #3B82F6;
   --secondary: #10B981;
   --accent: #B76E79;
-  --bg: #FFF9F0;
   --text: #333;
   --light: #FFF;
-  --overlay: rgba(255, 249, 240, 0.85); /* Semi-transparent overlay */
-  --content-bg: rgba(255, 255, 255, 0.9); /* Slightly transparent white */
+  --content-bg: rgba(255, 255, 255, 0.9);
 }
 
-/* Base Styles with Background Image */
 body {
   font-family: 'Poppins', 'Segoe UI', sans-serif;
-  background: url('../images/restaurant-bg.jpg');
+  background: 
+    linear-gradient(rgba(255, 249, 240, 0.85), rgba(255, 249, 240, 0.85)),
+    url('../images/restaurant-bg.jpg') no-repeat center center fixed;
   background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-  background-repeat: no-repeat;
   color: var(--text);
   margin: 0;
   padding-bottom: 100px;
   line-height: 1.6;
-  position: relative;
   min-height: 100vh;
 }
 
-/* Background Overlay */
-body::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: var(--overlay);
-  z-index: -1;
-}
-
-/* Header Styles */
 .header {
   text-align: center;
-  background: url('../images/header.jpg');
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-  background-repeat: no-repeat;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
   color: var(--light);
   padding: 20px;
   margin: 0;
   box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-  position: relative;
 }
 
 .logo {
@@ -65,7 +42,6 @@ body::before {
   margin-right: 5px;
 }
 
-/* Section Styles */
 .section {
   display: none;
   padding: 20px;
@@ -90,7 +66,6 @@ body::before {
   align-items: center;
 }
 
-/* Food Sub-Navigation */
 .food-nav {
   display: flex;
   overflow-x: auto;
@@ -128,7 +103,15 @@ body::before {
   color: white;
 }
 
-/* Sub-Section Styles */
+.food-sub-section {
+  display: none;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.food-sub-section.active {
+  display: block;
+}
+
 .sub-section {
   margin-bottom: 25px;
 }
@@ -141,7 +124,6 @@ body::before {
   align-items: center;
 }
 
-/* Menu Item Styles */
 .item {
   display: flex;
   justify-content: space-between;
@@ -165,7 +147,6 @@ body::before {
   text-shadow: 0 1px 2px rgba(0,0,0,0.1);
 }
 
-/* Navigation Styles */
 .nav {
   position: fixed;
   bottom: 40px;
@@ -221,7 +202,6 @@ body::before {
   transform: scale(1.1);
 }
 
-/* Footer Styles */
 .footer {
   position: fixed;
   bottom: 0;
@@ -243,13 +223,11 @@ body::before {
   text-decoration: none;
 }
 
-/* Animations */
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(10px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* Responsive Design */
 @media (min-width: 768px) {
   body {
     max-width: 600px;
