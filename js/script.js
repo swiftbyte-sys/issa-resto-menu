@@ -24,61 +24,38 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-/* Beverages Navigation */
-.beverages-nav {
-  display: flex;
-  overflow-x: auto;
-  gap: 8px;
-  padding: 10px 5px;
-  margin: 0 -5px 15px -5px;
-  scrollbar-width: none;
-  background-color: var(--content-bg);
-  backdrop-filter: blur(2px);
-  position: sticky;
-  top: 0;
-  z-index: 10;
-}
+// Add this to your existing DOMContentLoaded event listener
+document.addEventListener('DOMContentLoaded', () => {
+  // ... existing code ...
 
-.beverages-nav::-webkit-scrollbar {
-  display: none;
-}
+  // Beverages sub-navigation functionality
+  const beveragesNavButtons = document.querySelectorAll('.beverages-nav-btn');
+  beveragesNavButtons.forEach(button => {
+    button.addEventListener('click', function() {
+      const subsectionId = this.getAttribute('data-subsection');
+      showBeverageSubSection(subsectionId, this);
+    });
+  });
+});
 
-.beverages-nav-btn {
-  flex: 0 0 auto;
-  padding: 8px 15px;
-  border: none;
-  border-radius: 20px;
-  background-color: #f0f0f0;
-  color: #555;
-  font-size: 14px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  white-space: nowrap;
-}
-
-.beverages-nav-btn.active {
-  background-color: var(--secondary); /* Using secondary color for beverages */
-  color: white;
-}
-
-/* Beverage Sub-Sections */
-.beverage-sub-section {
-  display: none;
-  animation: fadeIn 0.3s ease-in-out;
-}
-
-.beverage-sub-section.active {
-  display: block;
-}
-
-/* Specific beverage category styling */
-#alcoholic h3 {
-  color: #B76E79; /* Different color for alcoholic section */
-}
-
-#smoothie h3 {
-  color: #FF6B6B; /* Different color for smoothies */
+// Add this new function
+function showBeverageSubSection(subsectionId, activeButton) {
+  // Hide all beverage sub-sections
+  document.querySelectorAll('.beverage-sub-section').forEach(section => {
+    section.classList.remove('active');
+  });
+  
+  // Show selected sub-section
+  document.getElementById(subsectionId).classList.add('active');
+  
+  // Update beverages nav buttons
+  document.querySelectorAll('.beverages-nav-btn').forEach(button => {
+    button.classList.remove('active');
+  });
+  
+  if (activeButton) {
+    activeButton.classList.add('active');
+  }
 }
 
 function showSection(sectionId, activeButton) {
