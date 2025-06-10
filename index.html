@@ -19,7 +19,7 @@
       background-color: var(--bg);
       color: var(--text);
       margin: 0;
-      padding-bottom: 0; /* Removed padding since footer is now above nav */
+      padding-bottom: 100px; /* Space for footer + nav */
       line-height: 1.6;
     }
 
@@ -29,7 +29,6 @@
       color: var(--light);
       padding: 20px;
       margin: 0;
-      position: relative;
       box-shadow: 0 2px 10px rgba(0,0,0,0.1);
     }
 
@@ -86,31 +85,10 @@
       font-weight: 600;
     }
 
-    /* Footer - now above navigation */
-    .footer {
-      text-align: center;
-      font-size: 14px;
-      padding: 15px 0;
-      background: var(--light);
-      color: #666;
-      border-top: 1px solid #EEE;
-      margin-top: 20px;
-      position: fixed;
-      bottom: 60px; /* Position above the nav */
-      width: 100%;
-      z-index: 999;
-    }
-
-    .swiftbyte-brand {
-      color: var(--primary);
-      font-weight: 600;
-      text-decoration: none;
-    }
-
     /* Navigation */
     .nav {
       position: fixed;
-      bottom: 0;
+      bottom: 40px; /* Moved up to make space for footer below */
       left: 0;
       width: 100%;
       background: var(--light);
@@ -162,15 +140,31 @@
       transform: scale(1.1);
     }
 
+    /* Footer - Now below navigation */
+    .footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      text-align: center;
+      font-size: 14px;
+      padding: 10px 0;
+      background: var(--light);
+      color: #666;
+      border-top: 1px solid #EEE;
+      z-index: 999;
+    }
+
+    .swiftbyte-brand {
+      color: var(--primary);
+      font-weight: 600;
+      text-decoration: none;
+    }
+
     /* Animations */
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(10px); }
       to { opacity: 1; transform: translateY(0); }
-    }
-
-    /* Content container - to prevent footer overlap */
-    .content {
-      padding-bottom: 120px; /* Space for footer + nav */
     }
 
     /* Responsive */
@@ -178,9 +172,9 @@
       body {
         max-width: 600px;
         margin: 0 auto;
+        padding-bottom: 0;
         box-shadow: 0 0 20px rgba(0,0,0,0.1);
         min-height: 100vh;
-        position: relative;
       }
       
       .nav {
@@ -189,6 +183,7 @@
         border-bottom: 1px solid #EEE;
         box-shadow: none;
         padding: 15px 0;
+        margin-top: 20px;
       }
       
       .footer {
@@ -196,10 +191,6 @@
         width: auto;
         margin-top: 20px;
         border-top: 1px solid #EEE;
-      }
-      
-      .content {
-        padding-bottom: 0;
       }
     }
   </style>
@@ -212,86 +203,80 @@
   <h1>Issa Resto Menu</h1>
 </div>
 
-<div class="content">
-  <div id="food" class="section active">
-    <h2>🍽️ Food</h2>
-    <div class="item">
-      <span class="item-name">Fattouch</span>
-      <span class="item-price">$5</span>
-    </div>
-    <div class="item">
-      <span class="item-name">Taboule</span>
-      <span class="item-price">$5</span>
-    </div>
-    <div class="item">
-      <span class="item-name">Homos</span>
-      <span class="item-price">$5</span>
-    </div>
-    <div class="item">
-      <span class="item-name">Fries</span>
-      <span class="item-price">$4</span>
-    </div>
-    <div class="item">
-      <span class="item-name">Chicken Shawarma</span>
-      <span class="item-price">$8</span>
-    </div>
+<div id="food" class="section active">
+  <h2>🍽️ Food</h2>
+  <div class="item">
+    <span class="item-name">Fattouch</span>
+    <span class="item-price">$5</span>
   </div>
-
-  <div id="beverages" class="section">
-    <h2>🥤 Beverages</h2>
-    <div class="item">
-      <span class="item-name">Soft Drink</span>
-      <span class="item-price">$2</span>
-    </div>
-    <div class="item">
-      <span class="item-name">Beer</span>
-      <span class="item-price">$4</span>
-    </div>
-    <div class="item">
-      <span class="item-name">Whiskey</span>
-      <span class="item-price">$5</span>
-    </div>
-    <div class="item">
-      <span class="item-name">Fresh Juice</span>
-      <span class="item-price">$3</span>
-    </div>
+  <div class="item">
+    <span class="item-name">Taboule</span>
+    <span class="item-price">$5</span>
   </div>
-
-  <div id="dessert" class="section">
-    <h2>🍨 Dessert</h2>
-    <div class="item">
-      <span class="item-name">Chocolate Mousse</span>
-      <span class="item-price">$4</span>
-    </div>
-    <div class="item">
-      <span class="item-name">Ice Cream</span>
-      <span class="item-price">$3</span>
-    </div>
-    <div class="item">
-      <span class="item-name">Baklava</span>
-      <span class="item-price">$5</span>
-    </div>
+  <div class="item">
+    <span class="item-name">Homos</span>
+    <span class="item-price">$5</span>
   </div>
-
-  <div id="hookah" class="section">
-    <h2>💨 Hookah</h2>
-    <div class="item">
-      <span class="item-name">Massal</span>
-      <span class="item-price">$6</span>
-    </div>
-    <div class="item">
-      <span class="item-name">Special Flavor</span>
-      <span class="item-price">$8</span>
-    </div>
-    <div class="item">
-      <span class="item-name">Premium Mix</span>
-      <span class="item-price">$10</span>
-    </div>
+  <div class="item">
+    <span class="item-name">Fries</span>
+    <span class="item-price">$4</span>
+  </div>
+  <div class="item">
+    <span class="item-name">Chicken Shawarma</span>
+    <span class="item-price">$8</span>
   </div>
 </div>
 
-<div class="footer">
-  Menu designed by <a href="#" class="swiftbyte-brand">SwiftByte</a> | 📞 78986115
+<div id="beverages" class="section">
+  <h2>🥤 Beverages</h2>
+  <div class="item">
+    <span class="item-name">Soft Drink</span>
+    <span class="item-price">$2</span>
+  </div>
+  <div class="item">
+    <span class="item-name">Beer</span>
+    <span class="item-price">$4</span>
+  </div>
+  <div class="item">
+    <span class="item-name">Whiskey</span>
+    <span class="item-price">$5</span>
+  </div>
+  <div class="item">
+    <span class="item-name">Fresh Juice</span>
+    <span class="item-price">$3</span>
+  </div>
+</div>
+
+<div id="dessert" class="section">
+  <h2>🍨 Dessert</h2>
+  <div class="item">
+    <span class="item-name">Chocolate Mousse</span>
+    <span class="item-price">$4</span>
+  </div>
+  <div class="item">
+    <span class="item-name">Ice Cream</span>
+    <span class="item-price">$3</span>
+  </div>
+  <div class="item">
+    <span class="item-name">Baklava</span>
+    <span class="item-price">$5</span>
+  </div>
+</div>
+
+<div id="hookah" class="section">
+  <h2>💨 Hookah</h2>
+  <div class="item">
+    <span class="item-name">Massal</span>
+    <span class="item-price">$6</span>
+  </div>
+  <div class="item">
+    <span class="item-name">Special Flavor</span>
+    <span class="item-price">$8</span>
+  </div>
+  <div class="item">
+    <span class="item-name">Premium Mix</span>
+    <span class="item-price">$10</span>
+  </div>
 </div>
 
 <div class="nav">
@@ -313,24 +298,19 @@
   </button>
 </div>
 
+<!-- Footer now below navigation -->
+<div class="footer">
+  Menu designed by <a href="#" class="swiftbyte-brand">SwiftByte</a> | 📞 78986115
+</div>
+
 <script>
   function showSection(id, btn) {
-    // Hide all sections
-    document.querySelectorAll('.section').forEach(sec => {
-      sec.classList.remove('active');
-    });
-    
-    // Show selected section
+    document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
     document.getElementById(id).classList.add('active');
-    
-    // Update nav buttons
-    document.querySelectorAll('.nav-btn').forEach(b => {
-      b.classList.remove('active');
-    });
+    document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
   }
   
-  // Add item animation on page load
   document.addEventListener('DOMContentLoaded', () => {
     const items = document.querySelectorAll('.item');
     items.forEach((item, index) => {
