@@ -45,7 +45,7 @@ body::before {
   background-position: center;
   background-attachment: fixed;
   background-repeat: no-repeat;
-  color: var(--light);
+  /*color: var(--light);*/
   padding: 20px;
   margin: 0;
   box-shadow: 0 2px 10px rgba(0,0,0,0.1);
