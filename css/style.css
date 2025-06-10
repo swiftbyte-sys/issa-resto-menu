@@ -24,7 +24,7 @@ body {
   text-align: center;
   background: linear-gradient(rgba(255, 249, 240, 0.85), rgba(255, 249, 240, 0.85)),
     url('../images/header.jpg') no-repeat center center fixed;
-  color: var(--light);
+  color: var(--dark);
   padding: 20px;
   margin: 0;
   box-shadow: 0 2px 10px rgba(0,0,0,0.1);
