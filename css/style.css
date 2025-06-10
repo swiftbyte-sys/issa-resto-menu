@@ -148,6 +148,63 @@ body {
   text-shadow: 0 1px 2px rgba(0,0,0,0.1);
 }
 
+
+/* Beverages Navigation */
+.beverages-nav {
+  display: flex;
+  overflow-x: auto;
+  gap: 8px;
+  padding: 10px 5px;
+  margin: 0 -5px 15px -5px;
+  scrollbar-width: none;
+  background-color: var(--content-bg);
+  backdrop-filter: blur(2px);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.beverages-nav::-webkit-scrollbar {
+  display: none;
+}
+
+.beverages-nav-btn {
+  flex: 0 0 auto;
+  padding: 8px 15px;
+  border: none;
+  border-radius: 20px;
+  background-color: #f0f0f0;
+  color: #555;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.beverages-nav-btn.active {
+  background-color: var(--secondary); /* Using secondary color for beverages */
+  color: white;
+}
+
+/* Beverage Sub-Sections */
+.beverage-sub-section {
+  display: none;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.beverage-sub-section.active {
+  display: block;
+}
+
+/* Specific beverage category styling */
+#alcoholic h3 {
+  color: #B76E79; /* Different color for alcoholic section */
+}
+
+#smoothie h3 {
+  color: #FF6B6B; /* Different color for smoothies */
+}
 .nav {
   position: fixed;
   bottom: 40px;
