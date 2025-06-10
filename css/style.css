@@ -12,7 +12,7 @@
 /* Base Styles with Background Image */
 body {
   font-family: 'Poppins', 'Segoe UI', sans-serif;
-  background-image: url('images/restaurant-bg.jpg');
+  background-image: url('../images/restaurant-bg.jpg');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -48,7 +48,7 @@ body::before {
   position: relative;
 }
 
-.logo {
+/*.logo {
   font-weight: 700;
   font-size: 1.2em;
   color: var(--light);
@@ -60,7 +60,7 @@ body::before {
   content: "⚡";
   margin-right: 5px;
 }
-
+*/
 /* Section Styles */
 .section {
   display: none;
