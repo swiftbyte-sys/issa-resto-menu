@@ -183,7 +183,7 @@ body {
 }
 
 .beverages-nav-btn.active {
-  background-color: var(--secondary); /* Using secondary color for beverages */
+  background-color: var(--primary); /* Using secondary color for beverages */
   color: white;
 }
 
@@ -197,14 +197,7 @@ body {
   display: block;
 }
 
-/* Specific beverage category styling */
-#alcoholic h3 {
-  color: #B76E79; /* Different color for alcoholic section */
-}
 
-#smoothie h3 {
-  color: #FF6B6B; /* Different color for smoothies */
-}
 .nav {
   position: fixed;
   bottom: 40px;
