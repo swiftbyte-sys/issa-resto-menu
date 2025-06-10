@@ -1,31 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Issa Resto - Digital Menu</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="header">
+ <!-- <div class="logo">SwiftByte</div> -->
+  <h1>Issa Resto Menu</h1>
+</div>
+
 <div id="food" class="section active">
   <h2>🍽️ Food</h2>
   
-  <!-- Food Sub-Navigation -->
-  <div class="food-nav">
-    <button class="food-nav-btn active" data-subsection="appetizers">Appetizers</button>
-    <button class="food-nav-btn" data-subsection="salads">Salads</button>
-    <button class="food-nav-btn" data-subsection="combos">Combos</button>
-    <button class="food-nav-btn" data-subsection="sandwiches">Sandwiches</button>
-    <button class="food-nav-btn" data-subsection="burgers">Burgers</button>
-    <button class="food-nav-btn" data-subsection="pizza">Pizza</button>
-    <button class="food-nav-btn" data-subsection="platters">Main Platters</button>
-  </div>
-
-  <!-- Food Sub-Sections -->
-  <div id="appetizers" class="food-sub-section active">
+  <div class="sub-section">
     <h3>🥟 Appetizers</h3>
     <div class="item">
       <span class="item-name">Homos</span>
       <span class="item-price">$5</span>
     </div>
-    <!-- More items... -->
+    <div class="item">
+      <span class="item-name">Moutabal</span>
+      <span class="item-price">$5</span>
+    </div>
   </div>
 
-  <div id="salads" class="food-sub-section">
+  <div class="sub-section">
     <h3>🥗 Salads</h3>
-    <!-- Salad items... -->
+    <div class="item">
+      <span class="item-name">Fattouch</span>
+      <span class="item-price">$5</span>
+    </div>
+    <div class="item">
+      <span class="item-name">Taboule</span>
+      <span class="item-price">$5</span>
+    </div>
   </div>
-  
-  <!-- Other food sub-sections... -->
+
+  <!-- Other food sub-sections here -->
 </div>
+
+<div id="beverages" class="section">
+  <h2>🥤 Beverages</h2>
+  <div class="item">
+    <span class="item-name">Soft Drink</span>
+    <span class="item-price">$2</span>
+  </div>
+  <div class="item">
+    <span class="item-name">Beer</span>
+    <span class="item-price">$4</span>
+  </div>
+</div>
+
+<!-- Other menu sections here -->
+
+<div class="nav">
+  <button class="nav-btn active" data-section="food">
+    <span class="nav-icon">🍽️</span>
+    <span>Food</span>
+  </button>
+  <button class="nav-btn" data-section="beverages">
+    <span class="nav-icon">🥤</span>
+    <span>Drinks</span>
+  </button>
+  <!-- Other nav buttons here -->
+</div>
+
+<div class="footer">
+  Menu designed by <a href="#" class="swiftbyte-brand">SwiftByte</a> | 📞 78986115
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
