@@ -9,21 +9,41 @@
       font-family: Arial, sans-serif;
       background-color: #fff9f0;
       color: #333;
+      margin: 0;
+    }
+    nav {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      background: #b76e79;
+      display: flex;
+      justify-content: space-around;
+      padding: 10px 0;
+      color: white;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .page {
+      display: none;
       padding: 20px;
       max-width: 600px;
       margin: auto;
+    }
+    .page.active {
+      display: block;
     }
     h1 {
       text-align: center;
       color: #b76e79;
     }
-    .section {
-      margin-top: 30px;
-    }
     .section h2 {
       border-bottom: 2px solid #b76e79;
       padding-bottom: 5px;
       color: #b76e79;
+      text-align: center;
     }
     .item {
       display: flex;
@@ -37,32 +57,59 @@
 <body>
   <h1>Issa Resto Menu</h1>
 
-  <div class="section">
-    <h2>Food</h2>
-    <div class="item"><span>Fattouch</span><span>$5</span></div>
-    <div class="item"><span>Taboule</span><span>$5</span></div>
-    <div class="item"><span>Homos</span><span>$5</span></div>
-    <div class="item"><span>Fries</span><span>$4</span></div>
-    <div class="item"><span>Chicken</span><span>$8</span></div>
+  <div id="food" class="page active">
+    <div class="section">
+      <h2>Food</h2>
+      <div class="item"><span>Fattouch</span><span>$5</span></div>
+      <div class="item"><span>Taboule</span><span>$5</span></div>
+      <div class="item"><span>Homos</span><span>$5</span></div>
+      <div class="item"><span>Fries</span><span>$4</span></div>
+      <div class="item"><span>Chicken</span><span>$8</span></div>
+      <div class="item"><span>Grilled Fish</span><span>$10</span></div>
+      <div class="item"><span>Shawarma</span><span>$6</span></div>
+    </div>
   </div>
 
-  <div class="section">
-    <h2>Beverages</h2>
-    <div class="item"><span>Soft Drink</span><span>$2</span></div>
-    <div class="item"><span>Beer</span><span>$4</span></div>
-    <div class="item"><span>Whiskey</span><span>$5</span></div>
+  <div id="beverages" class="page">
+    <div class="section">
+      <h2>Beverages</h2>
+      <div class="item"><span>Soft Drink</span><span>$2</span></div>
+      <div class="item"><span>Beer</span><span>$4</span></div>
+      <div class="item"><span>Whiskey</span><span>$5</span></div>
+      <div class="item"><span>Wine</span><span>$6</span></div>
+    </div>
   </div>
 
-  <div class="section">
-    <h2>Dessert</h2>
-    <div class="item"><span>Chocolate</span><span>$4</span></div>
-    <div class="item"><span>Ice Cream</span><span>$3</span></div>
+  <div id="dessert" class="page">
+    <div class="section">
+      <h2>Dessert</h2>
+      <div class="item"><span>Chocolate</span><span>$4</span></div>
+      <div class="item"><span>Ice Cream</span><span>$3</span></div>
+      <div class="item"><span>Baklava</span><span>$4</span></div>
+    </div>
   </div>
 
-  <div class="section">
-    <h2>Hukah</h2>
-    <div class="item"><span>Massal</span><span>$6</span></div>
-    <div class="item"><span>Special</span><span>$8</span></div>
+  <div id="hukah" class="page">
+    <div class="section">
+      <h2>Hukah</h2>
+      <div class="item"><span>Massal</span><span>$6</span></div>
+      <div class="item"><span>Special</span><span>$8</span></div>
+      <div class="item"><span>Double Apple</span><span>$7</span></div>
+    </div>
   </div>
+
+  <nav>
+    <a href="#" onclick="showPage('food')">Food</a>
+    <a href="#" onclick="showPage('beverages')">Beverages</a>
+    <a href="#" onclick="showPage('dessert')">Dessert</a>
+    <a href="#" onclick="showPage('hukah')">Hukah</a>
+  </nav>
+
+  <script>
+    function showPage(id) {
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+    }
+  </script>
 </body>
 </html>
