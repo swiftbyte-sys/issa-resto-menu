@@ -2,49 +2,42 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Issa Resto Menu</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Segoe UI', sans-serif;
       background-color: #fff9f0;
       color: #333;
       margin: 0;
+      padding-bottom: 60px; /* Space for bottom nav */
     }
-    nav {
-      position: fixed;
-      bottom: 0;
-      width: 100%;
-      background: #b76e79;
-      display: flex;
-      justify-content: space-around;
-      padding: 10px 0;
-      color: white;
-    }
-    nav a {
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    .page {
-      display: none;
-      padding: 20px;
-      max-width: 600px;
-      margin: auto;
-    }
-    .page.active {
-      display: block;
-    }
+
     h1 {
       text-align: center;
       color: #b76e79;
+      padding: 20px;
+      margin: 0;
+      background-color: #fff;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
+
+    .section {
+      display: none;
+      padding: 20px;
+      animation: fadeIn 0.4s ease-in-out;
+    }
+
+    .section.active {
+      display: block;
+    }
+
     .section h2 {
       border-bottom: 2px solid #b76e79;
       padding-bottom: 5px;
       color: #b76e79;
-      text-align: center;
     }
+
     .item {
       display: flex;
       justify-content: space-between;
@@ -52,64 +45,89 @@
       padding-bottom: 2px;
       border-bottom: 1px dashed #ccc;
     }
+
+    .nav {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background-color: #fff;
+      border-top: 1px solid #ccc;
+      display: flex;
+      justify-content: space-around;
+      padding: 10px 0;
+      z-index: 999;
+    }
+
+    .nav button {
+      background: none;
+      border: none;
+      font-size: 16px;
+      color: #b76e79;
+      cursor: pointer;
+      padding: 8px 16px;
+    }
+
+    .nav button.active {
+      font-weight: bold;
+      border-bottom: 2px solid #b76e79;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
   </style>
 </head>
 <body>
-  <h1>Issa Resto Menu</h1>
 
-  <div id="food" class="page active">
-    <div class="section">
-      <h2>Food</h2>
-      <div class="item"><span>Fattouch</span><span>$5</span></div>
-      <div class="item"><span>Taboule</span><span>$5</span></div>
-      <div class="item"><span>Homos</span><span>$5</span></div>
-      <div class="item"><span>Fries</span><span>$4</span></div>
-      <div class="item"><span>Chicken</span><span>$8</span></div>
-      <div class="item"><span>Grilled Fish</span><span>$10</span></div>
-      <div class="item"><span>Shawarma</span><span>$6</span></div>
-    </div>
-  </div>
+<h1>Issa Resto Menu</h1>
 
-  <div id="beverages" class="page">
-    <div class="section">
-      <h2>Beverages</h2>
-      <div class="item"><span>Soft Drink</span><span>$2</span></div>
-      <div class="item"><span>Beer</span><span>$4</span></div>
-      <div class="item"><span>Whiskey</span><span>$5</span></div>
-      <div class="item"><span>Wine</span><span>$6</span></div>
-    </div>
-  </div>
+<div id="food" class="section active">
+  <h2>Food</h2>
+  <div class="item"><span>Fattouch</span><span>$5</span></div>
+  <div class="item"><span>Taboule</span><span>$5</span></div>
+  <div class="item"><span>Homos</span><span>$5</span></div>
+  <div class="item"><span>Fries</span><span>$4</span></div>
+  <div class="item"><span>Chicken</span><span>$8</span></div>
+</div>
 
-  <div id="dessert" class="page">
-    <div class="section">
-      <h2>Dessert</h2>
-      <div class="item"><span>Chocolate</span><span>$4</span></div>
-      <div class="item"><span>Ice Cream</span><span>$3</span></div>
-      <div class="item"><span>Baklava</span><span>$4</span></div>
-    </div>
-  </div>
+<div id="beverages" class="section">
+  <h2>Beverages</h2>
+  <div class="item"><span>Soft Drink</span><span>$2</span></div>
+  <div class="item"><span>Beer</span><span>$4</span></div>
+  <div class="item"><span>Whiskey</span><span>$5</span></div>
+</div>
 
-  <div id="hukah" class="page">
-    <div class="section">
-      <h2>Hukah</h2>
-      <div class="item"><span>Massal</span><span>$6</span></div>
-      <div class="item"><span>Special</span><span>$8</span></div>
-      <div class="item"><span>Double Apple</span><span>$7</span></div>
-    </div>
-  </div>
+<div id="dessert" class="section">
+  <h2>Dessert</h2>
+  <div class="item"><span>Chocolate</span><span>$4</span></div>
+  <div class="item"><span>Ice Cream</span><span>$3</span></div>
+</div>
 
-  <nav>
-    <a href="#" onclick="showPage('food')">Food</a>
-    <a href="#" onclick="showPage('beverages')">Beverages</a>
-    <a href="#" onclick="showPage('dessert')">Dessert</a>
-    <a href="#" onclick="showPage('hukah')">Hukah</a>
-  </nav>
+<div id="hookah" class="section">
+  <h2>Hookah</h2>
+  <div class="item"><span>Massal</span><span>$6</span></div>
+  <div class="item"><span>Special</span><span>$8</span></div>
+</div>
 
-  <script>
-    function showPage(id) {
-      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-      document.getElementById(id).classList.add('active');
-    }
-  </script>
+<div class="nav">
+  <button onclick="showSection('food')" class="active">Food</button>
+  <button onclick="showSection('beverages')">Beverages</button>
+  <button onclick="showSection('dessert')">Dessert</button>
+  <button onclick="showSection('hookah')">Hookah</button>
+</div>
+
+<script>
+  function showSection(id) {
+    document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+
+    document.querySelectorAll('.nav button').forEach(btn => btn.classList.remove('active'));
+    const btn = Array.from(document.querySelectorAll('.nav button')).find(b => b.textContent.toLowerCase() === id);
+    if (btn) btn.classList.add('active');
+  }
+</script>
+
 </body>
 </html>
