@@ -1,5 +1,18 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // ... existing code ...
+  // Initialize menu items with animations
+  const items = document.querySelectorAll('.item');
+  items.forEach((item, index) => {
+    item.style.animationDelay = `${index * 0.05}s`;
+  });
+
+  // Main navigation functionality
+  const navButtons = document.querySelectorAll('.nav-btn');
+  navButtons.forEach(button => {
+    button.addEventListener('click', function() {
+      const sectionId = this.getAttribute('data-section');
+      showSection(sectionId, this);
+    });
+  });
 
   // Food sub-navigation functionality
   const foodNavButtons = document.querySelectorAll('.food-nav-btn');
@@ -10,6 +23,25 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 });
+
+function showSection(sectionId, activeButton) {
+  // Hide all sections
+  document.querySelectorAll('.section').forEach(section => {
+    section.classList.remove('active');
+  });
+  
+  // Show selected section
+  document.getElementById(sectionId).classList.add('active');
+  
+  // Update nav buttons
+  document.querySelectorAll('.nav-btn').forEach(button => {
+    button.classList.remove('active');
+  });
+  
+  if (activeButton) {
+    activeButton.classList.add('active');
+  }
+}
 
 function showFoodSubSection(subsectionId, activeButton) {
   // Hide all food sub-sections
