@@ -3,23 +3,47 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Issa Resto Menu</title>
+  <title>Issa Resto - Digital Menu</title>
   <style>
+    :root {
+      --primary: #3B82F6;  /* SwiftByte blue */
+      --secondary: #10B981;  /* SwiftByte green */
+      --accent: #B76E79;  /* Restaurant accent */
+      --bg: #FFF9F0;
+      --text: #333;
+      --light: #FFF;
+    }
+    
     body {
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #fff9f0;
-      color: #333;
+      font-family: 'Poppins', 'Segoe UI', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
       margin: 0;
-      padding-bottom: 70px; /* for nav */
+      padding-bottom: 80px;
+      line-height: 1.6;
     }
 
-    h1 {
+    .header {
       text-align: center;
-      background-color: #fff;
-      color: #b76e79;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: var(--light);
       padding: 20px;
       margin: 0;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      position: relative;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    .logo {
+      font-weight: 700;
+      font-size: 1.2em;
+      color: var(--light);
+      display: inline-block;
+      margin-bottom: 5px;
+    }
+
+    .logo::before {
+      content: "⚡";
+      margin-right: 5px;
     }
 
     .section {
@@ -33,123 +57,268 @@
     }
 
     .section h2 {
-      border-bottom: 2px solid #b76e79;
-      color: #b76e79;
-      margin-bottom: 10px;
+      border-bottom: 2px solid var(--accent);
+      color: var(--accent);
+      padding-bottom: 5px;
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
     }
 
     .item {
       display: flex;
       justify-content: space-between;
-      padding: 10px 0;
-      border-bottom: 1px dashed #ccc;
+      padding: 12px 0;
+      border-bottom: 1px dashed #DDD;
+      transition: transform 0.2s;
     }
 
-    /* Nav Styling */
+    .item:hover {
+      transform: translateX(5px);
+    }
+
+    .item-name {
+      font-weight: 500;
+    }
+
+    .item-price {
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    /* Navigation */
     .nav {
       position: fixed;
       bottom: 0;
       left: 0;
       width: 100%;
-      background: #fff;
-      border-top: 1px solid #ccc;
+      background: var(--light);
+      border-top: 1px solid #EEE;
       display: flex;
       justify-content: space-around;
-      padding: 8px 0;
-      box-shadow: 0 -1px 5px rgba(0,0,0,0.1);
+      padding: 10px 0;
+      box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
       z-index: 1000;
     }
 
-    .nav button {
+    .nav-btn {
       flex: 1;
       background: none;
       border: none;
-      padding: 10px 5px;
+      padding: 8px 5px;
       font-size: 14px;
       color: #666;
       display: flex;
       flex-direction: column;
       align-items: center;
-      transition: color 0.3s;
+      transition: all 0.3s;
       cursor: pointer;
+      position: relative;
     }
 
-    .nav button.active {
-      color: #b76e79;
-      font-weight: bold;
+    .nav-btn.active {
+      color: var(--primary);
+      font-weight: 600;
     }
 
-    .nav button span.icon {
-      font-size: 18px;
+    .nav-btn.active::after {
+      content: "";
+      position: absolute;
+      top: -10px;
+      width: 40px;
+      height: 3px;
+      background: var(--primary);
+      border-radius: 3px;
+    }
+
+    .nav-icon {
+      font-size: 20px;
       margin-bottom: 3px;
+      transition: transform 0.3s;
     }
 
+    .nav-btn.active .nav-icon {
+      transform: scale(1.1);
+    }
+
+    /* Animations */
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(10px); }
       to { opacity: 1; transform: translateY(0); }
     }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      font-size: 14px;
+      padding: 15px 0;
+      background: var(--light);
+      color: #666;
+      border-top: 1px solid #EEE;
+      margin-top: 20px;
+    }
+
+    .swiftbyte-brand {
+      color: var(--primary);
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    /* Responsive */
+    @media (min-width: 768px) {
+      body {
+        max-width: 600px;
+        margin: 0 auto;
+        padding-bottom: 0;
+        box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        min-height: 100vh;
+      }
+      
+      .nav {
+        position: static;
+        border-top: none;
+        border-bottom: 1px solid #EEE;
+        box-shadow: none;
+        padding: 15px 0;
+      }
+      
+      .nav-btn {
+        padding: 10px 5px;
+      }
+    }
   </style>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-<h1>Issa Resto Menu</h1>
+<div class="header">
+  <div class="logo">SwiftByte</div>
+  <h1>Issa Resto Menu</h1>
+</div>
 
 <div id="food" class="section active">
-  <h2>Food</h2>
-  <div class="item"><span>Fattouch</span><span>$5</span></div>
-  <div class="item"><span>Taboule</span><span>$5</span></div>
-  <div class="item"><span>Homos</span><span>$5</span></div>
-  <div class="item"><span>Fries</span><span>$4</span></div>
-  <div class="item"><span>Chicken</span><span>$8</span></div>
+  <h2>🍽️ Food</h2>
+  <div class="item">
+    <span class="item-name">Fattouch</span>
+    <span class="item-price">$5</span>
+  </div>
+  <div class="item">
+    <span class="item-name">Taboule</span>
+    <span class="item-price">$5</span>
+  </div>
+  <div class="item">
+    <span class="item-name">Homos</span>
+    <span class="item-price">$5</span>
+  </div>
+  <div class="item">
+    <span class="item-name">Fries</span>
+    <span class="item-price">$4</span>
+  </div>
+  <div class="item">
+    <span class="item-name">Chicken Shawarma</span>
+    <span class="item-price">$8</span>
+  </div>
 </div>
 
 <div id="beverages" class="section">
-  <h2>Beverages</h2>
-  <div class="item"><span>Soft Drink</span><span>$2</span></div>
-  <div class="item"><span>Beer</span><span>$4</span></div>
-  <div class="item"><span>Whiskey</span><span>$5</span></div>
+  <h2>🥤 Beverages</h2>
+  <div class="item">
+    <span class="item-name">Soft Drink</span>
+    <span class="item-price">$2</span>
+  </div>
+  <div class="item">
+    <span class="item-name">Beer</span>
+    <span class="item-price">$4</span>
+  </div>
+  <div class="item">
+    <span class="item-name">Whiskey</span>
+    <span class="item-price">$5</span>
+  </div>
+  <div class="item">
+    <span class="item-name">Fresh Juice</span>
+    <span class="item-price">$3</span>
+  </div>
 </div>
 
 <div id="dessert" class="section">
-  <h2>Dessert</h2>
-  <div class="item"><span>Chocolate</span><span>$4</span></div>
-  <div class="item"><span>Ice Cream</span><span>$3</span></div>
+  <h2>🍨 Dessert</h2>
+  <div class="item">
+    <span class="item-name">Chocolate Mousse</span>
+    <span class="item-price">$4</span>
+  </div>
+  <div class="item">
+    <span class="item-name">Ice Cream</span>
+    <span class="item-price">$3</span>
+  </div>
+  <div class="item">
+    <span class="item-name">Baklava</span>
+    <span class="item-price">$5</span>
+  </div>
 </div>
 
 <div id="hookah" class="section">
-  <h2>Hookah</h2>
-  <div class="item"><span>Massal</span><span>$6</span></div>
-  <div class="item"><span>Special</span><span>$8</span></div>
+  <h2>💨 Hookah</h2>
+  <div class="item">
+    <span class="item-name">Massal</span>
+    <span class="item-price">$6</span>
+  </div>
+  <div class="item">
+    <span class="item-name">Special Flavor</span>
+    <span class="item-price">$8</span>
+  </div>
+  <div class="item">
+    <span class="item-name">Premium Mix</span>
+    <span class="item-price">$10</span>
+  </div>
 </div>
 
 <div class="nav">
-  <button class="active" onclick="showSection('food', this)">
-    <span class="icon">🍽️</span>Food
+  <button class="nav-btn active" onclick="showSection('food', this)">
+    <span class="nav-icon">🍽️</span>
+    <span>Food</span>
   </button>
-  <button onclick="showSection('beverages', this)">
-    <span class="icon">🥤</span>Drinks
+  <button class="nav-btn" onclick="showSection('beverages', this)">
+    <span class="nav-icon">🥤</span>
+    <span>Drinks</span>
   </button>
-  <button onclick="showSection('dessert', this)">
-    <span class="icon">🍨</span>Dessert
+  <button class="nav-btn" onclick="showSection('dessert', this)">
+    <span class="nav-icon">🍨</span>
+    <span>Dessert</span>
   </button>
-  <button onclick="showSection('hookah', this)">
-    <span class="icon">💨</span>Hookah
+  <button class="nav-btn" onclick="showSection('hookah', this)">
+    <span class="nav-icon">💨</span>
+    <span>Hookah</span>
   </button>
+</div>
+
+<div class="footer">
+  Digital Menu powered by <a href="#" class="swiftbyte-brand">SwiftByte</a> | 📞 78986115
 </div>
 
 <script>
   function showSection(id, btn) {
     // Hide all sections
-    document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
+    document.querySelectorAll('.section').forEach(sec => {
+      sec.classList.remove('active');
+    });
+    
+    // Show selected section
     document.getElementById(id).classList.add('active');
-
+    
     // Update nav buttons
-    document.querySelectorAll('.nav button').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.nav-btn').forEach(b => {
+      b.classList.remove('active');
+    });
     btn.classList.add('active');
   }
+  
+  // Add item animation on page load
+  document.addEventListener('DOMContentLoaded', () => {
+    const items = document.querySelectorAll('.item');
+    items.forEach((item, index) => {
+      item.style.animationDelay = `${index * 0.05}s`;
+    });
+  });
 </script>
-<footer style="text-align: center; font-size: 14px; padding: 10px 0; background: #fff9f0; color: #999; border-top: 1px solid #ddd;">
-  Menu designed by <strong>SwiftByte</strong> | 📞 78986115
-</footer>
 </body>
 </html>
