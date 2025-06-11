@@ -322,6 +322,11 @@ h1 {
     color: #c0392b;
 }
 
+.cart-item-quantity {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* space between buttons */
+}
 .cart-total {
     font-weight: bold;
     text-align: right;
