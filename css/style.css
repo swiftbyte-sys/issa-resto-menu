@@ -253,7 +253,22 @@
             background-color: #e74c3c;
             color: white;
         }
-        
+
+        .footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  font-size: 14px;
+  padding: 10px 0;
+  background: var(--content-bg);
+  color: #666;
+  border-top: 1px solid #EEE;
+  z-index: 999;
+  backdrop-filter: blur(2px);
+}
+
         @media (max-width: 768px) {
             .menu-items {
                 grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
