@@ -44,19 +44,26 @@ document.addEventListener('DOMContentLoaded', function() {
     const addToCartButtons = document.querySelectorAll('.add-to-cart');
     const cartBadge = document.getElementById('cart-badge');
     const cartToggle = document.querySelector('.cart-toggle');
-    const cartSection = document.querySelector('.cart-section');
+    const cartSection = document.getElementById('cart-section');
+    const cartOverlay = document.getElementById('cart-overlay');
     const closeCartBtn = document.querySelector('.close-cart');
     
     let cart = [];
     
     // Toggle cart visibility
-    cartToggle.addEventListener('click', () => {
-        cartSection.classList.add('visible');
-    });
+    function toggleCart(show) {
+        if (show) {
+            cartSection.classList.add('visible');
+            cartOverlay.classList.add('visible');
+        } else {
+            cartSection.classList.remove('visible');
+            cartOverlay.classList.remove('visible');
+        }
+    }
     
-    closeCartBtn.addEventListener('click', () => {
-        cartSection.classList.remove('visible');
-    });
+    cartToggle.addEventListener('click', () => toggleCart(true));
+    closeCartBtn.addEventListener('click', () => toggleCart(false));
+    cartOverlay.addEventListener('click', () => toggleCart(false));
     
     // Add to cart functionality
     addToCartButtons.forEach(button => {
@@ -78,7 +85,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
             
             updateCart();
-            // Removed auto-showing cart when adding items
         });
     });
     
@@ -102,13 +108,16 @@ document.addEventListener('DOMContentLoaded', function() {
             cartItemElement.className = 'cart-item';
             cartItemElement.innerHTML = `
                 <div class="cart-item-info">
-                    <div class="cart-item-name">${item.name} x${item.quantity}</div>
+                    <div class="cart-item-name">${item.name}</div>
                     <div class="cart-item-price">$${(item.price * item.quantity).toFixed(2)}</div>
-                </div>
-                <div class="cart-item-actions">
-                    <button class="delete-item" data-index="${index}">
-                        <i class="fas fa-trash"></i>
-                    </button>
+                    <div class="cart-item-quantity">
+                        <button class="quantity-btn decrease" data-index="${index}">-</button>
+                        <span class="quantity-value">${item.quantity}</span>
+                        <button class="quantity-btn increase" data-index="${index}">+</button>
+                        <button class="delete-item" data-index="${index}">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
                 </div>
             `;
             cartItemsContainer.appendChild(cartItemElement);
@@ -117,7 +126,27 @@ document.addEventListener('DOMContentLoaded', function() {
             itemCount += item.quantity;
         });
         
-        // Add event listeners to delete buttons
+        // Add event listeners to quantity buttons
+        document.querySelectorAll('.decrease').forEach(button => {
+            button.addEventListener('click', (e) => {
+                const index = parseInt(e.currentTarget.dataset.index);
+                if (cart[index].quantity > 1) {
+                    cart[index].quantity -= 1;
+                } else {
+                    cart.splice(index, 1);
+                }
+                updateCart();
+            });
+        });
+        
+        document.querySelectorAll('.increase').forEach(button => {
+            button.addEventListener('click', (e) => {
+                const index = parseInt(e.currentTarget.dataset.index);
+                cart[index].quantity += 1;
+                updateCart();
+            });
+        });
+        
         document.querySelectorAll('.delete-item').forEach(button => {
             button.addEventListener('click', (e) => {
                 const index = parseInt(e.currentTarget.dataset.index);
@@ -142,7 +171,7 @@ document.addEventListener('DOMContentLoaded', function() {
             alert(`Order placed! Total: $${parseFloat(cartTotal.textContent).toFixed(2)}`);
             cart = [];
             updateCart();
-            cartSection.classList.remove('visible');
+            toggleCart(false);
         }
     });
 });
