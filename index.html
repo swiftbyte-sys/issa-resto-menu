@@ -1,55 +1,549 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Issa Resto - Digital Menu</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Menu App</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+        
+        .menu-categories {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .category-btn {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 5px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: all 0.3s ease;
+        }
+        
+        .category-btn:hover {
+            background-color: #2980b9;
+            transform: translateY(-2px);
+        }
+        
+        .category-btn.active {
+            background-color: #e74c3c;
+        }
+        
+        .menu-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+        }
+        
+        .menu-item {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .menu-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .item-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .item-details {
+            padding: 20px;
+        }
+        
+        .item-name {
+            font-size: 1.3em;
+            margin: 0 0 10px 0;
+            color: #2c3e50;
+        }
+        
+        .item-description {
+            color: #7f8c8d;
+            margin-bottom: 15px;
+            line-height: 1.4;
+        }
+        
+        .item-price {
+            font-weight: bold;
+            color: #e74c3c;
+            font-size: 1.2em;
+        }
+        
+        .item-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 15px;
+        }
+        
+        .add-to-cart {
+            background-color: #2ecc71;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        .add-to-cart:hover {
+            background-color: #27ae60;
+        }
+        
+        .cart-section {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.2);
+            width: 300px;
+            z-index: 1000;
+        }
+        
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
+        
+        .cart-items {
+            max-height: 200px;
+            overflow-y: auto;
+            margin-bottom: 15px;
+        }
+        
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #f5f5f5;
+        }
+        
+        .cart-item-name {
+            flex-grow: 1;
+        }
+        
+        .cart-item-price {
+            font-weight: bold;
+        }
+        
+        .cart-total {
+            font-weight: bold;
+            text-align: right;
+            margin-top: 10px;
+            font-size: 1.1em;
+        }
+        
+        .checkout-btn {
+            width: 100%;
+            padding: 10px;
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s ease;
+        }
+        
+        .checkout-btn:hover {
+            background-color: #c0392b;
+        }
+        
+        .search-bar {
+            margin: 20px auto;
+            text-align: center;
+            max-width: 500px;
+        }
+        
+        .search-input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 25px;
+            font-size: 1em;
+            outline: none;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        
+        .search-input:focus {
+            border-color: #3498db;
+        }
+        
+        .dietary-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            margin-top: 10px;
+        }
+        
+        .tag {
+            font-size: 0.7em;
+            padding: 3px 8px;
+            border-radius: 10px;
+            background-color: #f1f1f1;
+        }
+        
+        .tag.vegetarian {
+            background-color: #2ecc71;
+            color: white;
+        }
+        
+        .tag.vegan {
+            background-color: #27ae60;
+            color: white;
+        }
+        
+        .tag.gluten-free {
+            background-color: #3498db;
+            color: white;
+        }
+        
+        .tag.spicy {
+            background-color: #e74c3c;
+            color: white;
+        }
+        
+        @media (max-width: 768px) {
+            .menu-items {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+            
+            .cart-section {
+                width: 90%;
+                left: 5%;
+                right: 5%;
+                bottom: 10px;
+            }
+        }
+    </style>
 </head>
 <body>
-
-<div class="header">
-  <h1>Issa Resto Menu</h1>
-  <div class="search-container">
-    <i class="fas fa-search"></i>
-    <input type="text" id="search-input" placeholder="Search menu items...">
-  </div>
-</div>
-
-<!-- Cart Sidebar -->
-<div class="cart-sidebar">
-  <div class="cart-header">
-    <h3>Your Order <span class="cart-count">(0)</span></h3>
-    <button class="close-cart"><i class="fas fa-times"></i></button>
-  </div>
-  <div class="cart-items">
-    <!-- Cart items will be added here dynamically -->
-  </div>
-  <div class="cart-footer">
-    <div class="cart-total">
-      <span>Total:</span>
-      <span class="total-amount">$0.00</span>
+    <header>
+        <div class="container">
+            <h1>Gourmet Delights</h1>
+            <p>Discover our exquisite menu selections</p>
+        </div>
+    </header>
+    
+    <div class="container">
+        <div class="search-bar">
+            <input type="text" class="search-input" placeholder="Search menu items...">
+        </div>
+        
+        <div class="menu-categories">
+            <button class="category-btn active" data-category="all">All Items</button>
+            <button class="category-btn" data-category="starters">Starters</button>
+            <button class="category-btn" data-category="mains">Main Courses</button>
+            <button class="category-btn" data-category="desserts">Desserts</button>
+            <button class="category-btn" data-category="drinks">Drinks</button>
+        </div>
+        
+        <div class="menu-items">
+            <!-- Starters -->
+            <div class="menu-item" data-category="starters">
+                <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd" alt="Fresh Salad" class="item-image">
+                <div class="item-details">
+                    <h3 class="item-name">Garden Fresh Salad</h3>
+                    <p class="item-description">Crisp mixed greens with cherry tomatoes, cucumber, carrots, and our house vinaigrette.</p>
+                    <div class="dietary-tags">
+                        <span class="tag vegetarian">Vegetarian</span>
+                        <span class="tag gluten-free">Gluten-Free</span>
+                    </div>
+                    <div class="item-footer">
+                        <span class="item-price">$8.99</span>
+                        <button class="add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="menu-item" data-category="starters">
+                <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641" alt="Bruschetta" class="item-image">
+                <div class="item-details">
+                    <h3 class="item-name">Tomato Bruschetta</h3>
+                    <p class="item-description">Toasted bread topped with tomatoes, garlic, fresh basil, and olive oil.</p>
+                    <div class="dietary-tags">
+                        <span class="tag vegetarian">Vegetarian</span>
+                    </div>
+                    <div class="item-footer">
+                        <span class="item-price">$7.50</span>
+                        <button class="add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Main Courses -->
+            <div class="menu-item" data-category="mains">
+                <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c" alt="Grilled Salmon" class="item-image">
+                <div class="item-details">
+                    <h3 class="item-name">Grilled Salmon</h3>
+                    <p class="item-description">Fresh Atlantic salmon grilled to perfection with lemon butter sauce, served with seasonal vegetables.</p>
+                    <div class="dietary-tags">
+                        <span class="tag gluten-free">Gluten-Free</span>
+                    </div>
+                    <div class="item-footer">
+                        <span class="item-price">$18.99</span>
+                        <button class="add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="menu-item" data-category="mains">
+                <img src="https://images.unsplash.com/photo-1559847844-5315695dadae" alt="Beef Steak" class="item-image">
+                <div class="item-details">
+                    <h3 class="item-name">Ribeye Steak</h3>
+                    <p class="item-description">12oz prime ribeye cooked to your liking, served with garlic mashed potatoes and asparagus.</p>
+                    <div class="dietary-tags">
+                        <span class="tag spicy">Spicy Option</span>
+                    </div>
+                    <div class="item-footer">
+                        <span class="item-price">$24.99</span>
+                        <button class="add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="menu-item" data-category="mains">
+                <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950" alt="Vegetable Pasta" class="item-image">
+                <div class="item-details">
+                    <h3 class="item-name">Vegetable Pasta</h3>
+                    <p class="item-description">Penne pasta with seasonal vegetables in a creamy alfredo sauce.</p>
+                    <div class="dietary-tags">
+                        <span class="tag vegetarian">Vegetarian</span>
+                    </div>
+                    <div class="item-footer">
+                        <span class="item-price">$14.50</span>
+                        <button class="add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Desserts -->
+            <div class="menu-item" data-category="desserts">
+                <img src="https://images.unsplash.com/photo-1563805042-7684c019e1cb" alt="Chocolate Cake" class="item-image">
+                <div class="item-details">
+                    <h3 class="item-name">Chocolate Lava Cake</h3>
+                    <p class="item-description">Warm chocolate cake with a molten center, served with vanilla ice cream.</p>
+                    <div class="item-footer">
+                        <span class="item-price">$7.99</span>
+                        <button class="add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="menu-item" data-category="desserts">
+                <img src="https://images.unsplash.com/photo-1497034825429-c343d7c6a68f" alt="Cheesecake" class="item-image">
+                <div class="item-details">
+                    <h3 class="item-name">New York Cheesecake</h3>
+                    <p class="item-description">Classic creamy cheesecake with strawberry topping.</p>
+                    <div class="dietary-tags">
+                        <span class="tag vegetarian">Vegetarian</span>
+                    </div>
+                    <div class="item-footer">
+                        <span class="item-price">$6.50</span>
+                        <button class="add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Drinks -->
+            <div class="menu-item" data-category="drinks">
+                <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b" alt="Cocktail" class="item-image">
+                <div class="item-details">
+                    <h3 class="item-name">Signature Mojito</h3>
+                    <p class="item-description">Refreshing mint, lime, sugar and rum cocktail.</p>
+                    <div class="item-footer">
+                        <span class="item-price">$9.99</span>
+                        <button class="add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="menu-item" data-category="drinks">
+                <img src="https://images.unsplash.com/photo-1551023408-00feba5e2eab" alt="Wine" class="item-image">
+                <div class="item-details">
+                    <h3 class="item-name">House Red Wine</h3>
+                    <p class="item-description">Glass of our premium Cabernet Sauvignon.</p>
+                    <div class="item-footer">
+                        <span class="item-price">$8.50</span>
+                        <button class="add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <button class="checkout-btn">Checkout</button>
-  </div>
-</div>
-<div class="cart-overlay"></div>
-
-<!-- Rest of your existing menu sections remain the same -->
-<!-- ... -->
-
-<!-- Add to your existing nav -->
-<div class="nav">
-  <!-- Your existing nav buttons -->
-  <button class="cart-btn">
-    <span class="nav-icon"><i class="fas fa-shopping-cart"></i></span>
-    <span>Cart</span>
-    <span class="cart-badge">0</span>
-  </button>
-</div>
-
-<script src="js/script.js"></script>
+    
+    <div class="cart-section">
+        <div class="cart-header">
+            <h3>Your Order</h3>
+            <span id="cart-count">0 items</span>
+        </div>
+        <div class="cart-items" id="cart-items">
+            <!-- Cart items will be added here dynamically -->
+        </div>
+        <div class="cart-total">
+            Total: $<span id="cart-total">0.00</span>
+        </div>
+        <button class="checkout-btn">Proceed to Checkout</button>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Category filtering
+            const categoryButtons = document.querySelectorAll('.category-btn');
+            const menuItems = document.querySelectorAll('.menu-item');
+            
+            categoryButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Remove active class from all buttons
+                    categoryButtons.forEach(btn => btn.classList.remove('active'));
+                    // Add active class to clicked button
+                    button.classList.add('active');
+                    
+                    const category = button.dataset.category;
+                    
+                    menuItems.forEach(item => {
+                        if (category === 'all' || item.dataset.category === category) {
+                            item.style.display = 'block';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                });
+            });
+            
+            // Search functionality
+            const searchInput = document.querySelector('.search-input');
+            
+            searchInput.addEventListener('input', () => {
+                const searchTerm = searchInput.value.toLowerCase();
+                
+                menuItems.forEach(item => {
+                    const name = item.querySelector('.item-name').textContent.toLowerCase();
+                    const description = item.querySelector('.item-description').textContent.toLowerCase();
+                    
+                    if (name.includes(searchTerm) || description.includes(searchTerm)) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+            
+            // Shopping cart functionality
+            const cartItemsContainer = document.getElementById('cart-items');
+            const cartCount = document.getElementById('cart-count');
+            const cartTotal = document.getElementById('cart-total');
+            const addToCartButtons = document.querySelectorAll('.add-to-cart');
+            
+            let cart = [];
+            
+            addToCartButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const menuItem = button.closest('.menu-item');
+                    const itemName = menuItem.querySelector('.item-name').textContent;
+                    const itemPrice = parseFloat(menuItem.querySelector('.item-price').textContent.replace('$', ''));
+                    
+                    // Check if item already exists in cart
+                    const existingItem = cart.find(item => item.name === itemName);
+                    
+                    if (existingItem) {
+                        existingItem.quantity += 1;
+                    } else {
+                        cart.push({
+                            name: itemName,
+                            price: itemPrice,
+                            quantity: 1
+                        });
+                    }
+                    
+                    updateCart();
+                });
+            });
+            
+            function updateCart() {
+                // Clear cart display
+                cartItemsContainer.innerHTML = '';
+                
+                // Add each item to cart display
+                let total = 0;
+                let itemCount = 0;
+                
+                cart.forEach(item => {
+                    const cartItemElement = document.createElement('div');
+                    cartItemElement.className = 'cart-item';
+                    cartItemElement.innerHTML = `
+                        <div class="cart-item-name">${item.name} x${item.quantity}</div>
+                        <div class="cart-item-price">$${(item.price * item.quantity).toFixed(2)}</div>
+                    `;
+                    cartItemsContainer.appendChild(cartItemElement);
+                    
+                    total += item.price * item.quantity;
+                    itemCount += item.quantity;
+                });
+                
+                // Update cart count and total
+                cartCount.textContent = `${itemCount} ${itemCount === 1 ? 'item' : 'items'}`;
+                cartTotal.textContent = total.toFixed(2);
+            }
+            
+            // Checkout button
+            const checkoutButton = document.querySelector('.checkout-btn');
+            
+            checkoutButton.addEventListener('click', () => {
+                if (cart.length === 0) {
+                    alert('Your cart is empty!');
+                } else {
+                    alert(`Order placed! Total: $${parseFloat(cartTotal.textContent).toFixed(2)}`);
+                    cart = [];
+                    updateCart();
+                }
+            });
+        });
+    </script>
 </body>
 </html>
