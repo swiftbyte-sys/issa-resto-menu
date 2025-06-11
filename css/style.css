@@ -288,3 +288,98 @@ footer a:hover {
         padding: 10px 0;
     }
 }
+
+
+/* ... (keep all your existing styles) ... */
+
+/* Add these new styles */
+.cart-toggle {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background-color: #e74c3c;
+    color: white;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5em;
+    cursor: pointer;
+    box-shadow: 0 3px 15px rgba(0,0,0,0.2);
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+.cart-toggle:hover {
+    background-color: #c0392b;
+    transform: scale(1.1);
+}
+
+.cart-badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background-color: #2ecc71;
+    color: white;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.7em;
+    font-weight: bold;
+}
+
+.cart-section {
+    position: fixed;
+    bottom: 100px;
+    right: 20px;
+    background-color: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 3px 15px rgba(0,0,0,0.2);
+    width: 300px;
+    z-index: 1000;
+    max-height: 60vh;
+    overflow-y: auto;
+    transform: translateX(150%);
+    transition: transform 0.3s ease;
+}
+
+.cart-section.visible {
+    transform: translateX(0);
+}
+
+.close-cart {
+    background: none;
+    border: none;
+    font-size: 1.5em;
+    cursor: pointer;
+    color: #7f8c8d;
+    padding: 0 5px;
+}
+
+.close-cart:hover {
+    color: #e74c3c;
+}
+
+@media (max-width: 768px) {
+    .cart-toggle {
+        bottom: 20px;
+        right: 20px;
+        width: 50px;
+        height: 50px;
+        font-size: 1.3em;
+    }
+    
+    .cart-section {
+        width: calc(100% - 40px);
+        left: 20px;
+        right: 20px;
+        bottom: 80px;
+        max-height: 50vh;
+    }
+}
