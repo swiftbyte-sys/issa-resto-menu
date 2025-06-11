@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Restaurant Menu App</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -15,7 +16,7 @@
     </header>
     
     <div class="container">
-        <div class="search-bar">
+       <div class="search-bar">
             <input type="text" class="search-input" placeholder="Search menu items...">
         </div>
         
@@ -161,10 +162,17 @@
         </div>
     </div>
     
-    <div class="cart-section">
+    <!-- Cart Toggle Button -->
+    <div class="cart-toggle">
+        <i class="fas fa-shopping-cart"></i>
+        <span class="cart-badge" id="cart-badge">0</span>
+    </div>
+    
+    <!-- Cart Section (initially hidden) -->
+    <div class="cart-section hidden">
         <div class="cart-header">
             <h3>Your Order</h3>
-            <span id="cart-count">0 items</span>
+            <button class="close-cart">&times;</button>
         </div>
         <div class="cart-items" id="cart-items">
             <!-- Cart items will be added here dynamically -->
