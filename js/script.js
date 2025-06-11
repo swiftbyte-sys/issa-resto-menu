@@ -5,7 +5,9 @@ document.addEventListener('DOMContentLoaded', function() {
     
     categoryButtons.forEach(button => {
         button.addEventListener('click', () => {
+            // Remove active class from all buttons
             categoryButtons.forEach(btn => btn.classList.remove('active'));
+            // Add active class to clicked button
             button.classList.add('active');
             
             const category = button.dataset.category;
@@ -67,11 +69,12 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Add to cart functionality
     addToCartButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            const menuItem = button.closest('.menu-item');
+        button.addEventListener('click', function() {
+            const menuItem = this.closest('.menu-item');
             const itemName = menuItem.querySelector('.item-name').textContent;
             const itemPrice = parseFloat(menuItem.querySelector('.item-price').textContent.replace('$', ''));
             
+            // Check if item already exists in cart
             const existingItem = cart.find(item => item.name === itemName);
             
             if (existingItem) {
@@ -128,8 +131,8 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Add event listeners to quantity buttons
         document.querySelectorAll('.decrease').forEach(button => {
-            button.addEventListener('click', (e) => {
-                const index = parseInt(e.currentTarget.dataset.index);
+            button.addEventListener('click', function() {
+                const index = parseInt(this.dataset.index);
                 if (cart[index].quantity > 1) {
                     cart[index].quantity -= 1;
                 } else {
@@ -140,16 +143,16 @@ document.addEventListener('DOMContentLoaded', function() {
         });
         
         document.querySelectorAll('.increase').forEach(button => {
-            button.addEventListener('click', (e) => {
-                const index = parseInt(e.currentTarget.dataset.index);
+            button.addEventListener('click', function() {
+                const index = parseInt(this.dataset.index);
                 cart[index].quantity += 1;
                 updateCart();
             });
         });
         
         document.querySelectorAll('.delete-item').forEach(button => {
-            button.addEventListener('click', (e) => {
-                const index = parseInt(e.currentTarget.dataset.index);
+            button.addEventListener('click', function() {
+                const index = parseInt(this.dataset.index);
                 cart.splice(index, 1);
                 updateCart();
             });
