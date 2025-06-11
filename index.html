@@ -5,333 +5,49 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Issa Resto - Digital Menu</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
 <div class="header">
- <!-- <div class="logo">SwiftByte</div> -->
   <h1>Issa Resto Menu</h1>
-</div>
-
-<div id="food" class="section active">
-  <h2>🍽️ Food</h2>
-  
-  <!-- Food Sub-Navigation -->
-  <div class="food-nav">
-    <button class="food-nav-btn active" data-subsection="appetizers">Appetizers</button>
-    <button class="food-nav-btn" data-subsection="salads">Salads</button>
-    <button class="food-nav-btn" data-subsection="combos">Combos</button>
-    <button class="food-nav-btn" data-subsection="sandwiches">Sandwiches</button>
-    <button class="food-nav-btn" data-subsection="burgers">Burgers</button>
-    <button class="food-nav-btn" data-subsection="pizza">Pizza</button>
-    <button class="food-nav-btn" data-subsection="platters">Main Platters</button>
-  </div>
-
-  <!-- Appetizers Sub-Section -->
-  <div id="appetizers" class="food-sub-section active">
-    <h3>🥟 Appetizers</h3>
-    <div class="item">
-      <span class="item-name">Homos</span>
-      <span class="item-price">$5.00</span>
-    </div>
-    <div class="item">
-      <span class="item-name">Moutabal</span>
-      <span class="item-price">$5.50</span>
-    </div>
-    <div class="item">
-      <span class="item-name">Fried Kibbeh (6 pieces)</span>
-      <span class="item-price">$6.50</span>
-    </div>
-    <div class="item">
-      <span class="item-name">Cheese Rolls</span>
-      <span class="item-price">$6.00</span>
-    </div>
-    <div class="item">
-      <span class="item-name">Fatayer (Spinach/Pie)</span>
-      <span class="item-price">$5.50</span>
-    </div>
-  </div>
-
-  <!-- Salads Sub-Section -->
-  <div id="salads" class="food-sub-section">
-    <h3>🥗 Salads</h3>
-    <div class="item">
-      <span class="item-name">Fattouch</span>
-      <span class="item-price">$7.00</span>
-    </div>
-    <div class="item">
-      <span class="item-name">Taboule</span>
-      <span class="item-price">$7.50</span>
-    </div>
-    <div class="item">
-      <span class="item-name">Greek Salad</span>
-      <span class="item-price">$8.00</span>
-    </div>
-    <div class="item">
-      <span class="item-name">Caesar Salad</span>
-      <span class="item-price">$8.50</span>
-    </div>
-    <div class="item">
-      <span class="item-name">Rocca Salad</span>
-      <span class="item-price">$7.50</span>
-    </div>
-  </div>
-
-  <!-- Combos Sub-Section -->
-  <div id="combos" class="food-sub-section">
-    <h3>🍱 Combos</h3>
-    <div class="item">
-      <span class="item-name">Mezze Platter (For 2)</span>
-      <span class="item-price">$18.00</span>
-    </div>
-    <div class="item">
-      <span class="item-name">Chicken Combo (Shawarma + Fries + Drink)</span>
-      <span class="item-price">$12.00</span>
-    </div>
-    <div class="item">
-      <span class="item-name">Beef Combo (Shawarma + Fries + Drink)</span>
-      <span class="item-price">$13.00</span>
-    </div>
-    <div class="item">
-      <span class="item-name">Family Feast (For 4)</span>
-      <span class="item-price">$35.00</span>
-    </div>
-  </div>
-
-  <!-- Sandwiches Sub-Section -->
-  <div id="sandwiches" class="food-sub-section">
-    <h3>🥪 Sandwiches</h3>
-    <div class="item">
-      <span class="item-name">Chicken Shawarma</span>
-      <span class="item-price">$6.50</span>
-    </div>
-    <div class="item">
-      <span class="item-name">Beef Shawarma</span>
-      <span class="item-price">$7.50</span>
-    </div>
-    <div class="item">
-      <span class="item-name">Falafel Wrap</span>
-      <span class="item-price">$5.50</span>
-    </div>
-    <div class="item">
-      <span class="item-name">Grilled Halloumi Sandwich</span>
-      <span class="item-price">$6.00</span>
-    </div>
-    <div class="item">
-      <span class="item-name">Mix Grill Sandwich</span>
-      <span class="item-price">$8.00</span>
-    </div>
-  </div>
-
-  <!-- Burgers Sub-Section -->
-  <div id="burgers" class="food-sub-section">
-    <h3>🍔 Burgers</h3>
-    <div class="item">
-      <span class="item-name">Classic Burger</span>
-      <span class="item-price">$8.00</span>
-    </div>
-    <div class="item">
-      <span class="item-name">Cheese Burger</span>
-      <span class="item-price">$9.00</span>
-    </div>
-    <div class="item">
-      <span class="item-name">Special Burger (Double Patty)</span>
-      <span class="item-price">$11.00</span>
-    </div>
-    <div class="item">
-      <span class="item-name">Chicken Burger</span>
-      <span class="item-price">$7.50</span>
-    </div>
-  </div>
-
-  <!-- Pizza Sub-Section -->
-  <div id="pizza" class="food-sub-section">
-    <h3>🍕 Pizza</h3>
-    <div class="item">
-      <span class="item-name">Margherita (Small)</span>
-      <span class="item-price">$10.00</span>
-    </div>
-    <div class="item">
-      <span class="item-name">Pepperoni (Medium)</span>
-      <span class="item-price">$14.00</span>
-    </div>
-    <div class="item">
-      <span class="item-name">Special Mix (Large)</span>
-      <span class="item-price">$18.00</span>
-    </div>
-    <div class="item">
-      <span class="item-name">Four Cheese</span>
-      <span class="item-price">$16.00</span>
-    </div>
-  </div>
-
-  <!-- Main Platters Sub-Section -->
-  <div id="platters" class="food-sub-section">
-    <h3>🍛 Main Platters</h3>
-    <div class="item">
-      <span class="item-name">Grilled Chicken Platter</span>
-      <span class="item-price">$14.00</span>
-    </div>
-    <div class="item">
-      <span class="item-name">Kebab Plate</span>
-      <span class="item-price">$16.00</span>
-    </div>
-    <div class="item">
-      <span class="item-name">Mixed Grill Platter</span>
-      <span class="item-price">$18.00</span>
-    </div>
-    <div class="item">
-      <span class="item-name">Shish Tawook Plate</span>
-      <span class="item-price">$15.00</span>
-    </div>
-    <div class="item">
-      <span class="item-name">Moussaka</span>
-      <span class="item-price">$12.00</span>
-    </div>
+  <div class="search-container">
+    <i class="fas fa-search"></i>
+    <input type="text" id="search-input" placeholder="Search menu items...">
   </div>
 </div>
 
-  <!-- Other food sub-sections would go here -->
-</div>
-
-<div id="beverages" class="section">
-  <h2>🥤 Beverages</h2>
- <div class="beverages-nav">
-    <button class="beverages-nav-btn active" data-subsection="hot drinks">Hot Drinks</button>
-    <button class="beverages-nav-btn" data-subsection="cold drinks">Cold Drinks</button>
-    <button class="beverages-nav-btn" data-subsection="smoothie">Smoothie</button>
-    <button class="beverages-nav-btn" data-subsection="alcoholic">Alcoholic</button>
+<!-- Cart Sidebar -->
+<div class="cart-sidebar">
+  <div class="cart-header">
+    <h3>Your Order <span class="cart-count">(0)</span></h3>
+    <button class="close-cart"><i class="fas fa-times"></i></button>
   </div>
-
-  <div id="hot drinks" class="beverage-sub-section active">
-    <h3>☕ Hot Drinks</h3>
-    <div class="item">
-      <span class="item-name">Coffee</span>
-      <span class="item-price">$3</span>
-    </div>
-    <div class="item">
-      <span class="item-name">Tea</span>
-      <span class="item-price">$2</span>
-    </div>
-    <div class="item">
-      <span class="item-name">Cappocino</span>
-      <span class="item-price">$4</span>
-    </div>
+  <div class="cart-items">
+    <!-- Cart items will be added here dynamically -->
   </div>
-    <div id="cold drinks" class="beverage-sub-section">
-    <h3>🥤 Cold Drinks</h3>
-    <div class="item">
-      <span class="item-name">Soft Drink</span>
-      <span class="item-price">$2</span>
+  <div class="cart-footer">
+    <div class="cart-total">
+      <span>Total:</span>
+      <span class="total-amount">$0.00</span>
     </div>
-    <div class="item">
-      <span class="item-name">Fresh Juice</span>
-      <span class="item-price">$4</span>
-    </div>
-    <div class="item">
-      <span class="item-name">Ice Tea</span>
-      <span class="item-price">$3</span>
-    </div>
-    </div>
-
-  <div id="smoothie" class="beverage-sub-section">
-    <h3>🍹 Smoothie</h3>
-    <div class="item">
-      <span class="item-name">Mix Berries</span>
-      <span class="item-price">$3</span>
-    </div>
-    <div class="item">
-      <span class="item-name">Strawberry</span>
-      <span class="item-price">$3</span>
-    </div>
-    <div class="item">
-      <span class="item-name">Oreo Milk Shake</span>
-      <span class="item-price">$4</span>
-    </div>
-  </div>
-
-  <div id="alcoholic" class="beverage-sub-section">
-    <h3>🍷 Alcohol</h3>
-    <div class="item">
-      <span class="item-name">Beer</span>
-      <span class="item-price">$3</span>
-    </div>
-    <div class="item">
-      <span class="item-name">Whiskey</span>
-      <span class="item-price">$5</span>
-    </div>
-    <div class="item">
-      <span class="item-name">Vodka</span>
-      <span class="item-price">$5</span>
-    </div>
-  </div>
-  
-</div>
-
-  <div id="dessert" class="section">
-  <h2>🍰 Dessert</h2>
-  <div class="item">
-    <span class="item-name">Chocolate Mousse</span>
-    <span class="item-price">$4</span>
-  </div>
-  <div class="item">
-    <span class="item-name">Cheese Cake</span>
-    <span class="item-price">$5</span>
-  </div>
-    <div class="item">
-    <span class="item-name">Eclare</span>
-    <span class="item-price">$3</span>
-  </div>
-    <div class="item">
-    <span class="item-name">Ice Cream</span>
-    <span class="item-price">$2</span>
+    <button class="checkout-btn">Checkout</button>
   </div>
 </div>
+<div class="cart-overlay"></div>
 
-  <div id="hookah" class="section">
-  <h2>💨 Hookah</h2>
-  <div class="item">
-    <span class="item-name">Maassal</span>
-    <span class="item-price">$7</span>
-  </div>
-  <div class="item">
-    <span class="item-name">Special</span>
-    <span class="item-price">$10</span>
-  </div>
-    <div class="item">
-    <span class="item-name">Premium</span>
-    <span class="item-price">$15</span>
-  </div>
-    <div class="item">
-    <span class="item-name">Add Rass</span>
-    <span class="item-price">$2</span>
-  </div>
-</div>
-<!-- Other menu sections would go here -->
+<!-- Rest of your existing menu sections remain the same -->
+<!-- ... -->
 
+<!-- Add to your existing nav -->
 <div class="nav">
-  <button class="nav-btn active" data-section="food">
-    <span class="nav-icon">🍽️</span>
-    <span>Food</span>
+  <!-- Your existing nav buttons -->
+  <button class="cart-btn">
+    <span class="nav-icon"><i class="fas fa-shopping-cart"></i></span>
+    <span>Cart</span>
+    <span class="cart-badge">0</span>
   </button>
-  <button class="nav-btn" data-section="beverages">
-    <span class="nav-icon">🥤</span>
-    <span>Beverages</span>
-  </button>
-  <button class="nav-btn" data-section="dessert">
-    <span class="nav-icon">🍰</span>
-    <span>Dessert</span>
-  </button>
-  <button class="nav-btn" data-section="hookah">
-    <span class="nav-icon">💨</span>
-    <span>Hookah</span>
-  </button>
-  <!-- Other nav buttons would go here -->
-</div>
-
-<div class="footer">
-  Menu designed by <a href="https://swiftbyte-sys.github.io/repo/" target="_blank" class="swiftbyte-brand" rel="noopener noreferrer">SwiftByte</a> | 📞 78986115
 </div>
 
 <script src="js/script.js"></script>
