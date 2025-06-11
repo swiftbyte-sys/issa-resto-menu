@@ -430,3 +430,75 @@ footer a:hover {
     color: #7f8c8d;
     padding: 20px;
 }
+
+.cart-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.cart-overlay.visible {
+    opacity: 1;
+}
+
+.cart-section {
+    position: fixed;
+    bottom: 100px;
+    right: 20px;
+    background-color: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 3px 15px rgba(0,0,0,0.2);
+    width: 300px;
+    z-index: 1000;
+    max-height: 60vh;
+    overflow-y: auto;
+    transform: translateX(150%);
+    transition: transform 0.3s ease;
+}
+
+.cart-section.visible {
+    transform: translateX(0);
+}
+
+/* Updated cart item quantity controls */
+.cart-item-quantity {
+    display: flex;
+    align-items: center;
+    margin-top: 5px;
+}
+
+.quantity-btn {
+    background: #f1f1f1;
+    border: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 0.9em;
+}
+
+.quantity-value {
+    margin: 0 10px;
+    min-width: 20px;
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .cart-section {
+        width: calc(100% - 40px);
+        left: 20px;
+        right: 20px;
+        bottom: 80px;
+        max-height: 50vh;
+    }
+}
