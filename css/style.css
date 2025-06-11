@@ -134,7 +134,7 @@
         
         .cart-section {
             position: fixed;
-            bottom: 20px;
+            bottom: 70px;
             right: 20px;
             background-color: white;
             padding: 15px;
@@ -269,6 +269,11 @@
   backdrop-filter: blur(2px);
 }
 
+
+footer a.swiftbyte-brand:hover {
+    color: #2980b9;
+    text-decoration: underline;
+}
         @media (max-width: 768px) {
             .menu-items {
                 grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
