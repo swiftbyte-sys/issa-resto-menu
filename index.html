@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Restaurant Menu App</title>
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
@@ -16,9 +16,9 @@
     
     <div class="container">
         <div class="search-bar">
-            <input type="text" class="search-input" placeholder="Search menu items..." />
+            <input type="text" class="search-input" placeholder="Search menu items...">
         </div>
-
+        
         <div class="menu-categories">
             <button class="category-btn active" data-category="all">All Items</button>
             <button class="category-btn" data-category="starters">Starters</button>
@@ -26,9 +26,9 @@
             <button class="category-btn" data-category="desserts">Desserts</button>
             <button class="category-btn" data-category="drinks">Drinks</button>
         </div>
-
+        
         <div class="menu-items">
-        <!-- Starters -->
+            <!-- Starters -->
             <div class="menu-item" data-category="starters">
                 <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd" alt="Fresh Salad" class="item-image">
                 <div class="item-details">
@@ -159,23 +159,31 @@
                 </div>
             </div>
         </div>
-        </div>
     </div>
-
+    
     <div class="cart-section">
         <div class="cart-header">
             <h3>Your Order</h3>
             <span id="cart-count">0 items</span>
         </div>
-        <div class="cart-items" id="cart-items"></div>
+        <div class="cart-items" id="cart-items">
+            <!-- Cart items will be added here dynamically -->
+        </div>
         <div class="cart-total">
             Total: $<span id="cart-total">0.00</span>
         </div>
         <button class="checkout-btn">Proceed to Checkout</button>
     </div>
-<div class="footer">
-  Menu designed by <a href="https://swiftbyte-sys.github.io/repo/" target="_blank" class="swiftbyte-brand" rel="noopener noreferrer">SwiftByte</a> | 📞 78986115
-</div>
-    <script src="js/script.js"></script>
+    
+    <footer>
+        Menu designed by <a href="https://swiftbyte-sys.github.io/repo/" 
+                          target="_blank" 
+                          class="swiftbyte-brand" 
+                          rel="noopener noreferrer">
+            SwiftByte
+        </a> | 📞 78986115
+    </footer>
+    
+    <script src="script.js"></script>
 </body>
 </html>
