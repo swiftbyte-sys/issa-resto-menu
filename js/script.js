@@ -5,9 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     categoryButtons.forEach(button => {
         button.addEventListener('click', () => {
-            // Remove active class from all buttons
             categoryButtons.forEach(btn => btn.classList.remove('active'));
-            // Add active class to clicked button
             button.classList.add('active');
             
             const category = button.dataset.category;
@@ -42,19 +40,31 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Shopping cart functionality
     const cartItemsContainer = document.getElementById('cart-items');
-    const cartCount = document.getElementById('cart-count');
     const cartTotal = document.getElementById('cart-total');
     const addToCartButtons = document.querySelectorAll('.add-to-cart');
+    const cartBadge = document.getElementById('cart-badge');
+    const cartToggle = document.querySelector('.cart-toggle');
+    const cartSection = document.querySelector('.cart-section');
+    const closeCartBtn = document.querySelector('.close-cart');
     
     let cart = [];
     
+    // Toggle cart visibility
+    cartToggle.addEventListener('click', () => {
+        cartSection.classList.add('visible');
+    });
+    
+    closeCartBtn.addEventListener('click', () => {
+        cartSection.classList.remove('visible');
+    });
+    
+    // Add to cart functionality
     addToCartButtons.forEach(button => {
         button.addEventListener('click', () => {
             const menuItem = button.closest('.menu-item');
             const itemName = menuItem.querySelector('.item-name').textContent;
             const itemPrice = parseFloat(menuItem.querySelector('.item-price').textContent.replace('$', ''));
             
-            // Check if item already exists in cart
             const existingItem = cart.find(item => item.name === itemName);
             
             if (existingItem) {
@@ -68,6 +78,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
             
             updateCart();
+            cartSection.classList.add('visible');
         });
     });
     
@@ -92,9 +103,16 @@ document.addEventListener('DOMContentLoaded', function() {
             itemCount += item.quantity;
         });
         
-        // Update cart count and total
-        cartCount.textContent = `${itemCount} ${itemCount === 1 ? 'item' : 'items'}`;
+        // Update cart badge and total
+        cartBadge.textContent = itemCount;
         cartTotal.textContent = total.toFixed(2);
+        
+        // Hide badge when cart is empty
+        if (itemCount === 0) {
+            cartBadge.style.display = 'none';
+        } else {
+            cartBadge.style.display = 'flex';
+        }
     }
     
     // Checkout button
@@ -107,6 +125,7 @@ document.addEventListener('DOMContentLoaded', function() {
             alert(`Order placed! Total: $${parseFloat(cartTotal.textContent).toFixed(2)}`);
             cart = [];
             updateCart();
+            cartSection.classList.remove('visible');
         }
     });
 });
