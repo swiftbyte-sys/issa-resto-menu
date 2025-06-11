@@ -78,7 +78,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
             
             updateCart();
-            cartSection.classList.add('visible');
+            // Removed auto-showing cart when adding items
         });
     });
     
@@ -86,16 +86,30 @@ document.addEventListener('DOMContentLoaded', function() {
         // Clear cart display
         cartItemsContainer.innerHTML = '';
         
+        if (cart.length === 0) {
+            cartItemsContainer.innerHTML = '<div class="empty-cart-message">Your cart is empty</div>';
+            cartBadge.style.display = 'none';
+            cartTotal.textContent = '0.00';
+            return;
+        }
+        
         // Add each item to cart display
         let total = 0;
         let itemCount = 0;
         
-        cart.forEach(item => {
+        cart.forEach((item, index) => {
             const cartItemElement = document.createElement('div');
             cartItemElement.className = 'cart-item';
             cartItemElement.innerHTML = `
-                <div class="cart-item-name">${item.name} x${item.quantity}</div>
-                <div class="cart-item-price">$${(item.price * item.quantity).toFixed(2)}</div>
+                <div class="cart-item-info">
+                    <div class="cart-item-name">${item.name} x${item.quantity}</div>
+                    <div class="cart-item-price">$${(item.price * item.quantity).toFixed(2)}</div>
+                </div>
+                <div class="cart-item-actions">
+                    <button class="delete-item" data-index="${index}">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </div>
             `;
             cartItemsContainer.appendChild(cartItemElement);
             
@@ -103,16 +117,19 @@ document.addEventListener('DOMContentLoaded', function() {
             itemCount += item.quantity;
         });
         
+        // Add event listeners to delete buttons
+        document.querySelectorAll('.delete-item').forEach(button => {
+            button.addEventListener('click', (e) => {
+                const index = parseInt(e.currentTarget.dataset.index);
+                cart.splice(index, 1);
+                updateCart();
+            });
+        });
+        
         // Update cart badge and total
         cartBadge.textContent = itemCount;
         cartTotal.textContent = total.toFixed(2);
-        
-        // Hide badge when cart is empty
-        if (itemCount === 0) {
-            cartBadge.style.display = 'none';
-        } else {
-            cartBadge.style.display = 'flex';
-        }
+        cartBadge.style.display = 'flex';
     }
     
     // Checkout button
