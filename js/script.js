@@ -66,31 +66,56 @@ document.addEventListener('DOMContentLoaded', function() {
     cartToggle.addEventListener('click', () => toggleCart(true));
     closeCartBtn.addEventListener('click', () => toggleCart(false));
     cartOverlay.addEventListener('click', () => toggleCart(false));
-    
-    // Add to cart functionality
+
+
+    // Add to cart functionality with special instructions
+    let currentItem = null;
+    const instructionsModal = document.getElementById('instructions-modal');
+    const specialInstructions = document.getElementById('special-instructions');
+    const closeModalBtn = document.querySelector('.close-modal');
+    const submitInstructionsBtn = document.querySelector('.submit-instructions');
+
     addToCartButtons.forEach(button => {
         button.addEventListener('click', function() {
-            const menuItem = this.closest('.menu-item');
-            const itemName = menuItem.querySelector('.item-name').textContent;
-            const itemPrice = parseFloat(menuItem.querySelector('.item-price').textContent.replace('$', ''));
-            
-            // Check if item already exists in cart
-            const existingItem = cart.find(item => item.name === itemName);
-            
-            if (existingItem) {
-                existingItem.quantity += 1;
-            } else {
-                cart.push({
-                    name: itemName,
-                    price: itemPrice,
-                    quantity: 1
-                });
-            }
-            
-            updateCart();
+            currentItem = this.closest('.menu-item');
+            instructionsModal.classList.add('visible');
         });
     });
-    
+
+    closeModalBtn.addEventListener('click', () => {
+        instructionsModal.classList.remove('visible');
+        specialInstructions.value = '';
+    });
+
+    submitInstructionsBtn.addEventListener('click', () => {
+        if (!currentItem) return;
+        
+        const itemName = currentItem.querySelector('.item-name').textContent;
+        const itemPrice = parseFloat(currentItem.querySelector('.item-price').textContent.replace('$', ''));
+        const instructions = specialInstructions.value.trim();
+        
+        const existingItemIndex = cart.findIndex(item => 
+            item.name === itemName && item.instructions === instructions
+        );
+        
+        if (existingItemIndex !== -1) {
+            cart[existingItemIndex].quantity += 1;
+        } else {
+            cart.push({
+                name: itemName,
+                price: itemPrice,
+                quantity: 1,
+                instructions: instructions
+            });
+        }
+        
+        updateCart();
+        instructionsModal.classList.remove('visible');
+        specialInstructions.value = '';
+        currentItem = null;
+    });
+
+    // Update the updateCart function to show instructions
     function updateCart() {
         // Clear cart display
         cartItemsContainer.innerHTML = '';
@@ -109,18 +134,27 @@ document.addEventListener('DOMContentLoaded', function() {
         cart.forEach((item, index) => {
             const cartItemElement = document.createElement('div');
             cartItemElement.className = 'cart-item';
+            
+            let instructionsHTML = '';
+            if (item.instructions) {
+                instructionsHTML = `<div class="cart-item-instructions">${item.instructions}</div>`;
+            }
+            
             cartItemElement.innerHTML = `
                 <div class="cart-item-info">
                     <div class="cart-item-name">${item.name}</div>
-                    <div class="cart-item-price">$${(item.price * item.quantity).toFixed(2)}</div>
-                    <div class="cart-item-quantity">
-                        <button class="quantity-btn decrease" data-index="${index}">-</button>
+                    <div class="cart-item-price">$${item.price.toFixed(2)}</div>
+                    ${instructionsHTML}
+                </div>
+                <div class="cart-item-controls">
+                    <div class="quantity-controls">
+                        <button class="quantity-btn decrease" data-index="${index}">−</button>
                         <span class="quantity-value">${item.quantity}</span>
                         <button class="quantity-btn increase" data-index="${index}">+</button>
-                        <button class="delete-item" data-index="${index}">
-                            <i class="fas fa-trash"></i>
-                        </button>
                     </div>
+                    <button class="delete-item" data-index="${index}">
+                        <i class="fas fa-trash"></i>
+                    </button>
                 </div>
             `;
             cartItemsContainer.appendChild(cartItemElement);
@@ -128,7 +162,7 @@ document.addEventListener('DOMContentLoaded', function() {
             total += item.price * item.quantity;
             itemCount += item.quantity;
         });
-        
+
         // Add event listeners to quantity buttons
         document.querySelectorAll('.decrease').forEach(button => {
             button.addEventListener('click', function() {
@@ -163,7 +197,9 @@ document.addEventListener('DOMContentLoaded', function() {
         cartTotal.textContent = total.toFixed(2);
         cartBadge.style.display = 'flex';
     }
-    
+
+    }
+
     // Checkout button
     const checkoutButton = document.querySelector('.checkout-btn');
     
@@ -177,4 +213,5 @@ document.addEventListener('DOMContentLoaded', function() {
             toggleCart(false);
         }
     });
+
 });
