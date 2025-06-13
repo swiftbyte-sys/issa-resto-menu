@@ -49,8 +49,16 @@ document.addEventListener('DOMContentLoaded', function() {
     const cartSection = document.getElementById('cart-section');
     const cartOverlay = document.getElementById('cart-overlay');
     const closeCartBtn = document.querySelector('.close-cart');
+    const checkoutButton = document.querySelector('.checkout-btn');
+    
+    // Special instructions modal elements
+    const instructionsModal = document.getElementById('instructions-modal');
+    const specialInstructions = document.getElementById('special-instructions');
+    const closeModalBtn = document.querySelector('.close-modal');
+    const submitInstructionsBtn = document.querySelector('.submit-instructions');
     
     let cart = [];
+    let currentItem = null;
     
     // Toggle cart visibility
     function toggleCart(show) {
@@ -63,44 +71,53 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
+    // Cart toggle event listeners
     cartToggle.addEventListener('click', () => toggleCart(true));
     closeCartBtn.addEventListener('click', () => toggleCart(false));
     cartOverlay.addEventListener('click', () => toggleCart(false));
-
-
+    
     // Add to cart functionality with special instructions
-    let currentItem = null;
-    const instructionsModal = document.getElementById('instructions-modal');
-    const specialInstructions = document.getElementById('special-instructions');
-    const closeModalBtn = document.querySelector('.close-modal');
-    const submitInstructionsBtn = document.querySelector('.submit-instructions');
-
     addToCartButtons.forEach(button => {
         button.addEventListener('click', function() {
             currentItem = this.closest('.menu-item');
             instructionsModal.classList.add('visible');
+            specialInstructions.focus();
         });
     });
-
+    
+    // Modal event listeners
     closeModalBtn.addEventListener('click', () => {
         instructionsModal.classList.remove('visible');
         specialInstructions.value = '';
     });
-
-    submitInstructionsBtn.addEventListener('click', () => {
+    
+    submitInstructionsBtn.addEventListener('click', addItemToCart);
+    
+    // Handle Enter key in instructions textarea
+    specialInstructions.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' && !e.shiftKey) {
+            e.preventDefault();
+            addItemToCart();
+        }
+    });
+    
+    function addItemToCart() {
         if (!currentItem) return;
         
         const itemName = currentItem.querySelector('.item-name').textContent;
         const itemPrice = parseFloat(currentItem.querySelector('.item-price').textContent.replace('$', ''));
         const instructions = specialInstructions.value.trim();
         
+        // Check if identical item (same name and instructions) already exists
         const existingItemIndex = cart.findIndex(item => 
             item.name === itemName && item.instructions === instructions
         );
         
         if (existingItemIndex !== -1) {
+            // Increase quantity if same item with same instructions exists
             cart[existingItemIndex].quantity += 1;
         } else {
+            // Add new item to cart
             cart.push({
                 name: itemName,
                 price: itemPrice,
@@ -113,9 +130,8 @@ document.addEventListener('DOMContentLoaded', function() {
         instructionsModal.classList.remove('visible');
         specialInstructions.value = '';
         currentItem = null;
-    });
-
-    // Update the updateCart function to show instructions
+    }
+    
     function updateCart() {
         // Clear cart display
         cartItemsContainer.innerHTML = '';
@@ -135,6 +151,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const cartItemElement = document.createElement('div');
             cartItemElement.className = 'cart-item';
             
+            // Add instructions if they exist
             let instructionsHTML = '';
             if (item.instructions) {
                 instructionsHTML = `<div class="cart-item-instructions">${item.instructions}</div>`;
@@ -162,7 +179,7 @@ document.addEventListener('DOMContentLoaded', function() {
             total += item.price * item.quantity;
             itemCount += item.quantity;
         });
-
+        
         // Add event listeners to quantity buttons
         document.querySelectorAll('.decrease').forEach(button => {
             button.addEventListener('click', function() {
@@ -197,12 +214,8 @@ document.addEventListener('DOMContentLoaded', function() {
         cartTotal.textContent = total.toFixed(2);
         cartBadge.style.display = 'flex';
     }
-
-    }
-
-    // Checkout button
-    const checkoutButton = document.querySelector('.checkout-btn');
     
+    // Checkout button
     checkoutButton.addEventListener('click', () => {
         if (cart.length === 0) {
             alert('Your cart is empty!');
@@ -213,5 +226,4 @@ document.addEventListener('DOMContentLoaded', function() {
             toggleCart(false);
         }
     });
-
 });
