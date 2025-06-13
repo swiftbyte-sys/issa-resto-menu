@@ -16,15 +16,30 @@ body {
 header {
     background-color: #2c3e50;
     color: white;
-    padding: 10px 0;
+    padding: 20px 0; /* Adjust this to control the height */
     text-align: center;
     margin-bottom: 10px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    display: flex; /* Add flexbox */
+    align-items: center; /* Vertical centering */
+    justify-content: center; /* Horizontal centering */
+    min-height: 0; /* Remove any minimum height */
+}
+
+header .container {
+    width: 100%; /* Ensure container takes full width */
+    padding: 0 15px; /* Add some side padding */
 }
 
 h1 {
     margin: 0;
-    font-size: 2.5em;
+    font-size: 2em; /* Adjust font size as needed */
+    line-height: 1.2; /* Control spacing between heading and paragraph */
+}
+
+header p {
+    margin: 5px 0 0 0; /* Adjust top margin to control spacing */
+    font-size: 1em;
 }
 
 .footer {
@@ -240,7 +255,7 @@ h1 {
     margin-bottom: 15px;
 }
 
-* Updated cart item styles */
+/* Updated cart item styles */
 .cart-item {
     display: flex;
     justify-content: space-between;
