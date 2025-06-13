@@ -28,17 +28,14 @@ h1 {
 }
 
 .footer {
-  
-  bottom: 0;
-  /*left: 50%; */
-  transform: translateX(-50%);
   text-align: center;
+  margin: 40px auto 0 auto; /* Top margin to push it a bit from content */
   padding: 20px;
   font-size: 0.9rem;
   color: #666;
   background-color: var(--dark-bg);
   width: 100%;
-  max-width: 500px; /* or any desired width */
+  max-width: 500px; /* controls how wide it gets */
   box-shadow: 0 -1px 5px rgba(0,0,0,0.05);
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
