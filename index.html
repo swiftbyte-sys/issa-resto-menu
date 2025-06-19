@@ -1,406 +1,517 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Issa Delights - Menu</title>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
-    <link rel="stylesheet" href="css/style.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Issa Delights - Menu</title>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+  />
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-    <header>
-        <div class="container">
-            <h1>Issa Delights</h1>
-            <p>Discover our exquisite menu selections</p>
-        </div>
-    </header>
-
+  <header class="menu-header">
     <div class="container">
-        <div class="search-bar">
-            <input
-              type="text"
-              class="search-input"
-              placeholder="Search menu items..."
-              aria-label="Search menu items"
-            />
-        </div>
+      <h1>Issa Delights</h1>
+      <p>Explore our delicious menu and enjoy!</p>
+    </div>
+  </header>
 
-        <div class="menu-categories" role="tablist" aria-label="Menu Categories">
-            <button
-              class="category-btn active"
-              data-category="all"
-              role="tab"
-              aria-selected="true"
-            >
-              All Items
-            </button>
-            <button
-              class="category-btn"
-              data-category="starters"
-              role="tab"
-              aria-selected="false"
-            >
-              Starters
-            </button>
-            <button
-              class="category-btn"
-              data-category="mains"
-              role="tab"
-              aria-selected="false"
-            >
-              Main Courses
-            </button>
-            <button
-              class="category-btn"
-              data-category="desserts"
-              role="tab"
-              aria-selected="false"
-            >
-              Desserts
-            </button>
-            <button
-              class="category-btn"
-              data-category="drinks"
-              role="tab"
-              aria-selected="false"
-            >
-              Drinks
-            </button>
-        </div>
-
-        <div class="menu-items">
-            <!-- Starters -->
-            <div class="menu-item" data-category="starters">
-                <img
-                  src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd"
-                  alt="Fresh Salad"
-                  class="item-image"
-                />
-                <div class="item-details">
-                    <h3 class="item-name">Garden Fresh Salad</h3>
-                    <p class="item-description">
-                      Crisp mixed greens with cherry tomatoes, cucumber, carrots, and our house
-                      vinaigrette.
-                    </p>
-                    <div class="dietary-tags">
-                        <span class="tag vegetarian">Vegetarian</span>
-                        <span class="tag gluten-free">Gluten-Free</span>
-                    </div>
-                    <div class="item-footer">
-                        <span class="item-price">$8.99</span>
-                        <button class="add-to-cart">Add to Cart</button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="menu-item" data-category="starters">
-                <img
-                  src="https://images.unsplash.com/photo-1565557623262-b51c2513a641"
-                  alt="Bruschetta"
-                  class="item-image"
-                />
-                <div class="item-details">
-                    <h3 class="item-name">Tomato Bruschetta</h3>
-                    <p class="item-description">
-                      Toasted bread topped with tomatoes, garlic, fresh basil, and olive oil.
-                    </p>
-                    <div class="dietary-tags">
-                        <span class="tag vegetarian">Vegetarian</span>
-                    </div>
-                    <div class="item-footer">
-                        <span class="item-price">$7.50</span>
-                        <button class="add-to-cart">Add to Cart</button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="menu-item" data-category="starters">
-                <img
-                  src="https://images.unsplash.com/photo-1603105037880-880cd4edfb0d"
-                  alt="Soup"
-                  class="item-image"
-                />
-                <div class="item-details">
-                    <h3 class="item-name">Creamy Mushroom Soup</h3>
-                    <p class="item-description">
-                      Rich and creamy soup made with wild mushrooms and a touch of truffle oil.
-                    </p>
-                    <div class="dietary-tags">
-                        <span class="tag vegetarian">Vegetarian</span>
-                    </div>
-                    <div class="item-footer">
-                        <span class="item-price">$6.99</span>
-                        <button class="add-to-cart">Add to Cart</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Main Courses -->
-            <div class="menu-item" data-category="mains">
-                <img
-                  src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c"
-                  alt="Grilled Salmon"
-                  class="item-image"
-                />
-                <div class="item-details">
-                    <h3 class="item-name">Grilled Salmon</h3>
-                    <p class="item-description">
-                      Fresh Atlantic salmon grilled to perfection with lemon butter sauce, served
-                      with seasonal vegetables.
-                    </p>
-                    <div class="dietary-tags">
-                        <span class="tag gluten-free">Gluten-Free</span>
-                    </div>
-                    <div class="item-footer">
-                        <span class="item-price">$18.99</span>
-                        <button class="add-to-cart">Add to Cart</button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="menu-item" data-category="mains">
-                <img
-                  src="https://images.unsplash.com/photo-1559847844-5315695dadae"
-                  alt="Beef Steak"
-                  class="item-image"
-                />
-                <div class="item-details">
-                    <h3 class="item-name">Ribeye Steak</h3>
-                    <p class="item-description">
-                      12oz prime ribeye cooked to your liking, served with garlic mashed potatoes and
-                      asparagus.
-                    </p>
-                    <div class="dietary-tags">
-                        <span class="tag spicy">Spicy Option</span>
-                    </div>
-                    <div class="item-footer">
-                        <span class="item-price">$24.99</span>
-                        <button class="add-to-cart">Add to Cart</button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="menu-item" data-category="mains">
-                <img
-                  src="https://images.unsplash.com/photo-1601050690597-df0568f70950"
-                  alt="Vegetable Pasta"
-                  class="item-image"
-                />
-                <div class="item-details">
-                    <h3 class="item-name">Vegetable Pasta</h3>
-                    <p class="item-description">
-                      Penne pasta with seasonal vegetables in a creamy alfredo sauce.
-                    </p>
-                    <div class="dietary-tags">
-                        <span class="tag vegetarian">Vegetarian</span>
-                    </div>
-                    <div class="item-footer">
-                        <span class="item-price">$14.50</span>
-                        <button class="add-to-cart">Add to Cart</button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="menu-item" data-category="mains">
-                <img
-                  src="https://images.unsplash.com/photo-1551504734-5ee1c4a1479b"
-                  alt="Burger"
-                  class="item-image"
-                />
-                <div class="item-details">
-                    <h3 class="item-name">Classic Burger</h3>
-                    <p class="item-description">
-                      Juicy beef patty with cheddar cheese, lettuce, tomato, and our special sauce.
-                    </p>
-                    <div class="item-footer">
-                        <span class="item-price">$12.99</span>
-                        <button class="add-to-cart">Add to Cart</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Desserts -->
-            <div class="menu-item" data-category="desserts">
-                <img
-                  src="https://images.unsplash.com/photo-1563805042-7684c019e1cb"
-                  alt="Chocolate Cake"
-                  class="item-image"
-                />
-                <div class="item-details">
-                    <h3 class="item-name">Chocolate Lava Cake</h3>
-                    <p class="item-description">
-                      Warm chocolate cake with a molten center, served with vanilla ice cream.
-                    </p>
-                    <div class="item-footer">
-                        <span class="item-price">$7.99</span>
-                        <button class="add-to-cart">Add to Cart</button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="menu-item" data-category="desserts">
-                <img
-                  src="https://images.unsplash.com/photo-1497034825429-c343d7c6a68f"
-                  alt="Cheesecake"
-                  class="item-image"
-                />
-                <div class="item-details">
-                    <h3 class="item-name">New York Cheesecake</h3>
-                    <p class="item-description">Classic creamy cheesecake with strawberry topping.</p>
-                    <div class="dietary-tags">
-                        <span class="tag vegetarian">Vegetarian</span>
-                    </div>
-                    <div class="item-footer">
-                        <span class="item-price">$6.50</span>
-                        <button class="add-to-cart">Add to Cart</button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="menu-item" data-category="desserts">
-                <img
-                  src="https://images.unsplash.com/photo-1495147466023-ac5c588e2e94"
-                  alt="Ice Cream"
-                  class="item-image"
-                />
-                <div class="item-details">
-                    <h3 class="item-name">Artisan Ice Cream</h3>
-                    <p class="item-description">
-                      Three scoops of our homemade ice cream with your choice of flavors.
-                    </p>
-                    <div class="dietary-tags">
-                        <span class="tag vegetarian">Vegetarian</span>
-                    </div>
-                    <div class="item-footer">
-                        <span class="item-price">$5.99</span>
-                        <button class="add-to-cart">Add to Cart</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Drinks -->
-            <div class="menu-item" data-category="drinks">
-                <img
-                  src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b"
-                  alt="Cocktail"
-                  class="item-image"
-                />
-                <div class="item-details">
-                    <h3 class="item-name">Signature Mojito</h3>
-                    <p class="item-description">Refreshing mint, lime, sugar and rum cocktail.</p>
-                    <div class="item-footer">
-                        <span class="item-price">$9.99</span>
-                        <button class="add-to-cart">Add to Cart</button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="menu-item" data-category="drinks">
-                <img
-                  src="https://images.unsplash.com/photo-1551023408-00feba5e2eab"
-                  alt="Wine"
-                  class="item-image"
-                />
-                <div class="item-details">
-                    <h3 class="item-name">House Red Wine</h3>
-                    <p class="item-description">Glass of our premium Cabernet Sauvignon.</p>
-                    <div class="item-footer">
-                        <span class="item-price">$8.50</span>
-                        <button class="add-to-cart">Add to Cart</button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="menu-item" data-category="drinks">
-                <img
-                  src="https://images.unsplash.com/photo-1436076863939-06870fe779c2"
-                  alt="Coffee"
-                  class="item-image"
-                />
-                <div class="item-details">
-                    <h3 class="item-name">Artisan Coffee</h3>
-                    <p class="item-description">
-                      Freshly brewed coffee made from locally roasted beans.
-                    </p>
-                    <div class="dietary-tags">
-                        <span class="tag vegetarian">Vegetarian</span>
-                        <span class="tag vegan">Vegan</span>
-                    </div>
-                    <div class="item-footer">
-                        <span class="item-price">$3.50</span>
-                        <button class="add-to-cart">Add to Cart</button>
-                    </div>
-                </div>
-            </div>
-        </div>
+  <main class="container">
+    <!-- Search Bar -->
+    <div class="search-bar">
+      <input
+        type="text"
+        class="search-input"
+        placeholder="Search menu items..."
+        aria-label="Search menu items"
+      />
     </div>
 
-    <!-- Cart Toggle Button -->
-    <div class="cart-toggle" role="button" aria-label="Toggle shopping cart" tabindex="0">
-        <i class="fas fa-shopping-cart"></i>
-        <span class="cart-badge" id="cart-badge">0</span>
-    </div>
+    <!-- Category Buttons -->
+    <nav class="menu-categories" aria-label="Menu categories">
+      <button class="category-btn active" data-category="all">All</button>
+      <button class="category-btn" data-category="appetizers">Appetizers</button>
+      <button class="category-btn" data-category="salads">Salads</button>
+      <button class="category-btn" data-category="main">Main Dishes</button>
+      <button class="category-btn" data-category="desserts">Desserts</button>
+      <button class="category-btn" data-category="drinks">Drinks</button>
+    </nav>
 
-    <!-- Cart Overlay -->
-    <div class="cart-overlay hidden" id="cart-overlay" tabindex="-1"></div>
+    <!-- Menu Items -->
+    <section class="menu-section" aria-label="Menu items">
+      <div class="menu-items">
 
-    <!-- Cart Section -->
-    <div class="cart-section hidden" id="cart-section" role="dialog" aria-modal="true" aria-labelledby="cart-title" tabindex="-1">
-        <div class="cart-header">
-            <h3 id="cart-title">Your Order</h3>
-            <button class="close-cart" aria-label="Close cart">&times;</button>
-        </div>
-        <div class="cart-items" id="cart-items">
-            <div class="empty-cart-message">Your cart is empty</div>
-        </div>
-        <div class="cart-total">
-            Total: $<span id="cart-total">0.00</span>
-        </div>
-        <button class="checkout-btn">Proceed to Checkout</button>
-    </div>
-
-    <!-- Feedback Button -->
-    <div class="feedback-btn-container">
-        <button class="feedback-btn" id="feedback-btn" aria-label="Give feedback">
-            <i class="fas fa-comment-alt"></i> Give Feedback
-        </button>
-    </div>
-
-    <footer>
-        Menu designed by
-        <a
-          href="https://swiftbyte-sys.github.io/repo/"
-          target="_blank"
-          class="swiftbyte-brand"
-          rel="noopener noreferrer"
+        <!-- Appetizers -->
+        <article
+          class="menu-item"
+          data-category="appetizers"
+          tabindex="0"
+          aria-labelledby="item1-name"
         >
-          SwiftByte
-        </a>
-        | 📞 <a href="tel:78986115">78986115</a>
-    </footer>
+          <img
+            src="images/french-fries.jpg"
+            alt="French Fries"
+            class="item-image"
+          />
+          <div class="item-details">
+            <h3 id="item1-name" class="item-name">French Fries</h3>
+            <p class="item-description">
+              Crispy golden fries served with ketchup.
+            </p>
+            <div class="item-price">$3.50</div>
+            <div class="item-footer">
+              <button class="add-to-cart" aria-label="Add French Fries to cart">
+                Add to Cart
+              </button>
+            </div>
+          </div>
+        </article>
 
-    <!-- Special Instructions Modal -->
-    <div class="modal-overlay hidden" id="instructions-modal" role="dialog" aria-modal="true" aria-labelledby="instructions-title" tabindex="-1">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 id="instructions-title">Add Special Instructions</h3>
-                <button class="close-modal" aria-label="Close instructions modal">&times;</button>
+        <article
+          class="menu-item"
+          data-category="appetizers"
+          tabindex="0"
+          aria-labelledby="item2-name"
+        >
+          <img
+            src="images/truffle-fries.jpg"
+            alt="Truffle Fries"
+            class="item-image"
+          />
+          <div class="item-details">
+            <h3 id="item2-name" class="item-name">Truffle Fries</h3>
+            <p class="item-description">
+              Fries tossed in truffle oil and parmesan.
+            </p>
+            <div class="item-price">$7.50</div>
+            <div class="item-footer">
+              <button
+                class="add-to-cart"
+                aria-label="Add Truffle Fries to cart"
+              >
+                Add to Cart
+              </button>
             </div>
-            <div class="modal-body">
-                <textarea
-                  id="special-instructions"
-                  placeholder="E.g. No onions, extra spicy, etc."
-                  rows="4"
-                  aria-label="Special instructions"
-                ></textarea>
-                <button class="submit-instructions">Add to Cart</button>
+          </div>
+        </article>
+
+        <article
+          class="menu-item"
+          data-category="appetizers"
+          tabindex="0"
+          aria-labelledby="item3-name"
+        >
+          <img
+            src="images/curly-fries.jpg"
+            alt="Curly Fries"
+            class="item-image"
+          />
+          <div class="item-details">
+            <h3 id="item3-name" class="item-name">Curly Fries</h3>
+            <p class="item-description">Seasoned curly fries, crispy and tasty.</p>
+            <div class="item-price">$6.00</div>
+            <div class="item-footer">
+              <button class="add-to-cart" aria-label="Add Curly Fries to cart">
+                Add to Cart
+              </button>
             </div>
-        </div>
+          </div>
+        </article>
+
+        <article
+          class="menu-item"
+          data-category="appetizers"
+          tabindex="0"
+          aria-labelledby="item4-name"
+        >
+          <img src="images/wedges.jpg" alt="Wedges" class="item-image" />
+          <div class="item-details">
+            <h3 id="item4-name" class="item-name">Wedges</h3>
+            <p class="item-description">
+              Thick potato wedges served with your choice of dip.
+            </p>
+            <div class="item-price">$4.50</div>
+            <div class="item-footer">
+              <button class="add-to-cart" aria-label="Add Wedges to cart">
+                Add to Cart
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <article
+          class="menu-item"
+          data-category="appetizers"
+          tabindex="0"
+          aria-labelledby="item5-name"
+        >
+          <img
+            src="images/cheese-garlic-bread.jpg"
+            alt="Cheese Garlic Bread"
+            class="item-image"
+          />
+          <div class="item-details">
+            <h3 id="item5-name" class="item-name">Cheese Garlic Bread</h3>
+            <p class="item-description">Toasted garlic bread with melted cheese.</p>
+            <div class="item-price">$6.00</div>
+            <div class="item-footer">
+              <button
+                class="add-to-cart"
+                aria-label="Add Cheese Garlic Bread to cart"
+              >
+                Add to Cart
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <article
+          class="menu-item"
+          data-category="appetizers"
+          tabindex="0"
+          aria-labelledby="item6-name"
+        >
+          <img
+            src="images/dynamite-shrimps.jpg"
+            alt="Dynamite Shrimps"
+            class="item-image"
+          />
+          <div class="item-details">
+            <h3 id="item6-name" class="item-name">Dynamite Shrimps</h3>
+            <p class="item-description">
+              Crispy shrimps tossed in spicy dynamite sauce.
+            </p>
+            <div class="item-price">$9.00</div>
+            <div class="item-footer">
+              <button
+                class="add-to-cart"
+                aria-label="Add Dynamite Shrimps to cart"
+              >
+                Add to Cart
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <article
+          class="menu-item"
+          data-category="appetizers"
+          tabindex="0"
+          aria-labelledby="item7-name"
+        >
+          <img src="images/nachos.jpg" alt="Nachos" class="item-image" />
+          <div class="item-details">
+            <h3 id="item7-name" class="item-name">Nachos</h3>
+            <p class="item-description">Corn chips topped with cheese and jalapeños.</p>
+            <div class="item-price">$9.50</div>
+            <div class="item-footer">
+              <button class="add-to-cart" aria-label="Add Nachos to cart">
+                Add to Cart
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <article
+          class="menu-item"
+          data-category="appetizers"
+          tabindex="0"
+          aria-labelledby="item8-name"
+        >
+          <img src="images/nuggets.jpg" alt="Nuggets" class="item-image" />
+          <div class="item-details">
+            <h3 id="item8-name" class="item-name">Nuggets</h3>
+            <p class="item-description">Golden fried chicken nuggets.</p>
+            <div class="item-price">$5.50</div>
+            <div class="item-footer">
+              <button class="add-to-cart" aria-label="Add Nuggets to cart">
+                Add to Cart
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <article
+          class="menu-item"
+          data-category="appetizers"
+          tabindex="0"
+          aria-labelledby="item9-name"
+        >
+          <img src="images/calamari-rings.jpg" alt="Calamari Rings" class="item-image" />
+          <div class="item-details">
+            <h3 id="item9-name" class="item-name">Calamari Rings</h3>
+            <p class="item-description">Lightly fried squid rings served with tartar sauce.</p>
+            <div class="item-price">$6.50</div>
+            <div class="item-footer">
+              <button class="add-to-cart" aria-label="Add Calamari Rings to cart">
+                Add to Cart
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <article
+          class="menu-item"
+          data-category="appetizers"
+          tabindex="0"
+          aria-labelledby="item10-name"
+        >
+          <img src="images/mozzarella-sticks.jpg" alt="Mozzarella Sticks" class="item-image" />
+          <div class="item-details">
+            <h3 id="item10-name" class="item-name">Mozzarella Sticks</h3>
+            <p class="item-description">Breaded and fried mozzarella cheese sticks.</p>
+            <div class="item-price">$5.50</div>
+            <div class="item-footer">
+              <button class="add-to-cart" aria-label="Add Mozzarella Sticks to cart">
+                Add to Cart
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <article
+          class="menu-item"
+          data-category="appetizers"
+          tabindex="0"
+          aria-labelledby="item11-name"
+        >
+          <img src="images/edamame.jpg" alt="Edamame" class="item-image" />
+          <div class="item-details">
+            <h3 id="item11-name" class="item-name">Edamame</h3>
+            <p class="item-description">Steamed young soybeans lightly salted.</p>
+            <div class="item-price">$5.00</div>
+            <div class="item-footer">
+              <button class="add-to-cart" aria-label="Add Edamame to cart">
+                Add to Cart
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <article
+          class="menu-item"
+          data-category="appetizers"
+          tabindex="0"
+          aria-labelledby="item12-name"
+        >
+          <img src="images/onion-rings.jpg" alt="Onion Rings" class="item-image" />
+          <div class="item-details">
+            <h3 id="item12-name" class="item-name">Onion Rings</h3>
+            <p class="item-description">Crispy battered onion rings.</p>
+            <div class="item-price">$5.00</div>
+            <div class="item-footer">
+              <button class="add-to-cart" aria-label="Add Onion Rings to cart">
+                Add to Cart
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Salads -->
+        <article
+          class="menu-item"
+          data-category="salads"
+          tabindex="0"
+          aria-labelledby="item13-name"
+        >
+          <img src="images/chef-salad.jpg" alt="Chef Salad" class="item-image" />
+          <div class="item-details">
+            <h3 id="item13-name" class="item-name">Chef Salad</h3>
+            <p class="item-description">
+              Mixed greens, turkey, ham, cheese, and boiled egg.
+            </p>
+            <div class="item-price">$8.50</div>
+            <div class="item-footer">
+              <button class="add-to-cart" aria-label="Add Chef Salad to cart">
+                Add to Cart
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <article
+          class="menu-item"
+          data-category="salads"
+          tabindex="0"
+          aria-labelledby="item14-name"
+        >
+          <img
+            src="images/chicken-caesar-salad.jpg"
+            alt="Chicken Caesar Salad"
+            class="item-image"
+          />
+          <div class="item-details">
+            <h3 id="item14-name" class="item-name">Chicken Caesar Salad</h3>
+            <p class="item-description">Romaine, grilled chicken, Caesar dressing.</p>
+            <div class="item-price">$9.00</div>
+            <div class="item-footer">
+              <button
+                class="add-to-cart"
+                aria-label="Add Chicken Caesar Salad to cart"
+              >
+                Add to Cart
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Main Dishes -->
+        <article
+          class="menu-item"
+          data-category="main"
+          tabindex="0"
+          aria-labelledby="item15-name"
+        >
+          <img src="images/grilled-steak.jpg" alt="Grilled Steak" class="item-image" />
+          <div class="item-details">
+            <h3 id="item15-name" class="item-name">Grilled Steak</h3>
+            <p class="item-description">Juicy grilled steak served with veggies.</p>
+            <div class="item-price">$18.00</div>
+            <div class="item-footer">
+              <button class="add-to-cart" aria-label="Add Grilled Steak to cart">
+                Add to Cart
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <article
+          class="menu-item"
+          data-category="main"
+          tabindex="0"
+          aria-labelledby="item16-name"
+        >
+          <img src="images/chicken-parm.jpg" alt="Chicken Parmesan" class="item-image" />
+          <div class="item-details">
+            <h3 id="item16-name" class="item-name">Chicken Parmesan</h3>
+            <p class="item-description">
+              Breaded chicken breast topped with marinara and cheese.
+            </p>
+            <div class="item-price">$15.00</div>
+            <div class="item-footer">
+              <button
+                class="add-to-cart"
+                aria-label="Add Chicken Parmesan to cart"
+              >
+                Add to Cart
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <article
+          class="menu-item"
+          data-category="main"
+          tabindex="0"
+          aria-labelledby="item17-name"
+        >
+          <img src="images/vegan-burger.jpg" alt="Vegan Burger" class="item-image" />
+          <div class="item-details">
+            <h3 id="item17-name" class="item-name">Vegan Burger</h3>
+            <p class="item-description">Plant-based patty with lettuce and tomato.</p>
+            <div class="item-price">$12.00</div>
+            <div class="item-footer">
+              <button class="add-to-cart" aria-label="Add Vegan Burger to cart">
+                Add to Cart
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Desserts -->
+        <article
+          class="menu-item"
+          data-category="desserts"
+          tabindex="0"
+          aria-labelledby="item18-name"
+        >
+          <img src="images/chocolate-cake.jpg" alt="Chocolate Cake" class="item-image" />
+          <div class="item-details">
+            <h3 id="item18-name" class="item-name">Chocolate Cake</h3>
+            <p class="item-description">Rich and moist chocolate layered cake.</p>
+            <div class="item-price">$6.00</div>
+            <div class="item-footer">
+              <button class="add-to-cart" aria-label="Add Chocolate Cake to cart">
+                Add to Cart
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <article
+          class="menu-item"
+          data-category="desserts"
+          tabindex="0"
+          aria-labelledby="item19-name"
+        >
+          <img src="images/cheesecake.jpg" alt="Cheesecake" class="item-image" />
+          <div class="item-details">
+            <h3 id="item19-name" class="item-name">Cheesecake</h3>
+            <p class="item-description">Creamy cheesecake with graham cracker crust.</p>
+            <div class="item-price">$6.50</div>
+            <div class="item-footer">
+              <button class="add-to-cart" aria-label="Add Cheesecake to cart">
+                Add to Cart
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Drinks -->
+        <article
+          class="menu-item"
+          data-category="drinks"
+          tabindex="0"
+          aria-labelledby="item20-name"
+        >
+          <img src="images/cola.jpg" alt="Cola" class="item-image" />
+          <div class="item-details">
+            <h3 id="item20-name" class="item-name">Cola</h3>
+            <p class="item-description">Refreshing classic cola drink.</p>
+            <div class="item-price">$2.50</div>
+            <div class="item-footer">
+              <button class="add-to-cart" aria-label="Add Cola to cart">
+                Add to Cart
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <article
+          class="menu-item"
+          data-category="drinks"
+          tabindex="0"
+          aria-labelledby="item21-name"
+        >
+          <img src="images/iced-tea.jpg" alt="Iced Tea" class="item-image" />
+          <div class="item-details">
+            <h3 id="item21-name" class="item-name">Iced Tea</h3>
+            <p class="item-description">Chilled black tea with lemon.</p>
+            <div class="item-price">$3.00</div>
+            <div class="item-footer">
+              <button class="add-to-cart" aria-label="Add Iced Tea to cart">
+                Add to Cart
+              </button>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- Feedback Button Centered -->
+    <div class="feedback-btn-container">
+      <button class="feedback-btn" id="feedback-btn" type="button">
+        Give Feedback
+      </button>
     </div>
+  </main>
 
-    <script src="js/script.js"></script>
-</body>
-</html>
+<footer style="text-align: center; padding: 15px 0; background-color: #f8f8f8; font-size: 14px;">
+  Menu designed by 
+  <a href="https://swiftbyte-sys.github.io/repo/" target="_blank" rel="noopener noreferrer" class="swiftbyte-brand">
+    SwiftByte
+  </a> | 📞 <a href="tel:78986115" style="color: inherit; text-decoration: none;">78986115</a>
+</footer>
