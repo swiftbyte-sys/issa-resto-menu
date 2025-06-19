@@ -109,3 +109,22 @@ document.addEventListener('DOMContentLoaded', function() {
         ratingInput.value = '0';
     });
 });
+document.getElementById('feedback-form').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const name = this.name.value.trim();
+  const email = this.email.value.trim();
+  const rating = this.rating.value;
+  const comments = this.comments.value.trim();
+  
+  if (!name || !email || rating === '0' || !comments) {
+    document.getElementById('form-status').textContent = 'Please fill out all fields.';
+    return;
+  }
+  
+  const subject = encodeURIComponent(`Feedback from ${name}`);
+  const body = encodeURIComponent(
+    `Name: ${name}\nEmail: ${email}\nRating: ${rating} stars\nComments:\n${comments}`
+  );
+  
+  window.location.href = `mailto:swiftbyte.lb@outlook.com?subject=${subject}&body=${body}`;
+});
