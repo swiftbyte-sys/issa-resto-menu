@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Cart state
+    // Initialize cart
     let cart = [];
     let currentItem = null;
     
@@ -77,6 +77,20 @@ document.addEventListener('DOMContentLoaded', function() {
     
     closeCart.addEventListener('click', closeCartFn);
     cartOverlay.addEventListener('click', closeCartFn);
+    
+    // Close instructions modal
+    document.querySelector('.close-modal').addEventListener('click', function() {
+        document.getElementById('instructions-modal').style.display = 'none';
+        document.body.style.overflow = '';
+    });
+    
+    // Close instructions modal when clicking outside
+    document.getElementById('instructions-modal').addEventListener('click', function(e) {
+        if (e.target === this) {
+            this.style.display = 'none';
+            document.body.style.overflow = '';
+        }
+    });
     
     // Update cart badge
     function updateCartBadge() {
@@ -159,17 +173,60 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Close instructions modal
-    document.querySelector('.close-modal').addEventListener('click', function() {
-        document.getElementById('instructions-modal').style.display = 'none';
-        document.body.style.overflow = '';
+    // Checkout button
+    document.querySelector('.checkout-btn').addEventListener('click', function() {
+        if (cart.length === 0) {
+            alert('Your cart is empty!');
+            return;
+        }
+        
+        alert(`Order placed! Total: $${document.getElementById('cart-total').textContent}\nThank you for your order!`);
+        cart = [];
+        updateCartBadge();
+        renderCartItems();
+        closeCartFn();
     });
     
-    // Close instructions modal when clicking outside
-    document.getElementById('instructions-modal').addEventListener('click', function(e) {
-        if (e.target === this) {
-            this.style.display = 'none';
-            document.body.style.overflow = '';
-        }
+    // Feedback button
+    document.getElementById('feedback-btn').addEventListener('click', function() {
+        window.location.href = 'feedback.html';
+    });
+    
+    // Category filtering
+    document.querySelectorAll('.category-btn').forEach(button => {
+        button.addEventListener('click', function() {
+            const category = this.dataset.category;
+            
+            // Update active button
+            document.querySelectorAll('.category-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            this.classList.add('active');
+            
+            // Filter items
+            document.querySelectorAll('.menu-item').forEach(item => {
+                if (category === 'all' || item.dataset.category === category) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        });
+    });
+    
+    // Search functionality
+    document.querySelector('.search-input').addEventListener('input', function() {
+        const searchTerm = this.value.toLowerCase();
+        
+        document.querySelectorAll('.menu-item').forEach(item => {
+            const name = item.querySelector('.item-name').textContent.toLowerCase();
+            const description = item.querySelector('.item-description').textContent.toLowerCase();
+            
+            if (name.includes(searchTerm) || description.includes(searchTerm)) {
+                item.style.display = 'block';
+            } else {
+                item.style.display = 'none';
+            }
+        });
     });
 });
