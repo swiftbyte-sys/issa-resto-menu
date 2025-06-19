@@ -587,3 +587,27 @@ footer a:hover {
     font-size: 0.9rem;
   }
 }
+.feedback-btn-container {
+  text-align: center;
+  margin: 2rem 0;
+  padding: 0 20px;
+}
+
+.feedback-btn {
+  background-color: #3498db;
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 30px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.feedback-btn:hover {
+  background-color: #2980b9;
+  transform: translateY(-2px);
+}
