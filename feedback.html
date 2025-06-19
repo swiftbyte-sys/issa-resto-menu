@@ -20,92 +20,44 @@
 
     <main>
       <div class="container">
-        <form class="feedback-form" id="feedback-form" novalidate>
-            <div class="form-group">
-                <label for="name">Your Name</label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  placeholder="Enter your name"
-                  required
-                  aria-required="true"
-                />
-            </div>
+        <form class="feedback-form" id="feedback-form" action="https://formspree.io/f/mzzgvlwj" method="POST">
+  <div class="form-group">
+    <label for="name">Your Name</label>
+    <input type="text" id="name" name="name" placeholder="Enter your name" required />
+  </div>
 
-            <div class="form-group">
-                <label for="email">Email Address</label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  placeholder="Enter your email"
-                  required
-                  aria-required="true"
-                />
-            </div>
+  <div class="form-group">
+    <label for="email">Email Address</label>
+    <input type="email" id="email" name="email" placeholder="Enter your email" required />
+  </div>
 
-            <div class="form-group">
-                <label for="rating">Rating</label>
-                <div class="rating-stars" role="radiogroup" aria-labelledby="rating-label">
-                    <i
-                      class="far fa-star"
-                      data-rating="1"
-                      role="radio"
-                      tabindex="0"
-                      aria-checked="false"
-                      aria-label="1 star"
-                    ></i>
-                    <i
-                      class="far fa-star"
-                      data-rating="2"
-                      role="radio"
-                      tabindex="-1"
-                      aria-checked="false"
-                      aria-label="2 stars"
-                    ></i>
-                    <i
-                      class="far fa-star"
-                      data-rating="3"
-                      role="radio"
-                      tabindex="-1"
-                      aria-checked="false"
-                      aria-label="3 stars"
-                    ></i>
-                    <i
-                      class="far fa-star"
-                      data-rating="4"
-                      role="radio"
-                      tabindex="-1"
-                      aria-checked="false"
-                      aria-label="4 stars"
-                    ></i>
-                    <i
-                      class="far fa-star"
-                      data-rating="5"
-                      role="radio"
-                      tabindex="-1"
-                      aria-checked="false"
-                      aria-label="5 stars"
-                    ></i>
-                </div>
-                <input type="hidden" id="rating" name="rating" value="0" />
-            </div>
+  <div class="form-group">
+    <label for="rating">Rating</label>
+    <div class="rating-stars">
+      <i class="far fa-star" data-rating="1"></i>
+      <i class="far fa-star" data-rating="2"></i>
+      <i class="far fa-star" data-rating="3"></i>
+      <i class="far fa-star" data-rating="4"></i>
+      <i class="far fa-star" data-rating="5"></i>
+    </div>
+    <input type="hidden" id="rating" name="rating" value="0" />
+  </div>
 
-            <div class="form-group">
-                <label for="comments">Your Feedback</label>
-                <textarea
-                  id="comments"
-                  name="comments"
-                  placeholder="Tell us about your experience..."
-                  rows="5"
-                  required
-                  aria-required="true"
-                ></textarea>
-            </div>
+  <div class="form-group">
+    <label for="comments">Your Feedback</label>
+    <textarea id="comments" name="comments" placeholder="Tell us about your experience..." rows="5" required></textarea>
+  </div>
 
-            <button type="submit" class="submit-feedback">Submit Feedback</button>
-        </form>
+  <button type="submit" class="submit-feedback">Submit Feedback</button>
+</form>
+
+<!-- Thank you popup -->
+<div id="thank-you-popup" class="popup hidden">
+  <div class="popup-content">
+    <p>✅ Thank you for your feedback!</p>
+    <button id="close-popup">Close</button>
+  </div>
+</div>
 
         <!-- Screen reader only live region for status messages -->
         <div id="form-status" class="sr-only" aria-live="polite" aria-atomic="true"></div>
