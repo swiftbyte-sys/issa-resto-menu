@@ -1,92 +1,123 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Issa Delights - Feedback</title>
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-  />
-  <link rel="stylesheet" href="css/style.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Issa Delights - Feedback</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-  <header>
-    <div class="container">
-      <h1>Your Feedback</h1>
-      <p>We'd love to hear from you!</p>
-    </div>
-  </header>
-
-  <main class="container">
-    <section aria-labelledby="feedback-form-title">
-      <form class="feedback-form" novalidate>
-        <h2 id="feedback-form-title" class="sr-only">Feedback Form</h2>
-
-        <div class="form-group">
-          <label for="name">Your Name <span aria-hidden="true">*</span></label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            placeholder="Enter your name"
-            aria-required="true"
-          />
+    <header>
+        <div class="container" role="banner">
+            <h1>Your Feedback</h1>
+            <p>We'd love to hear from you!</p>
         </div>
+    </header>
 
-        <div class="form-group">
-          <label for="email">Email Address <span aria-hidden="true">*</span></label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            placeholder="Enter your email"
-            aria-required="true"
-          />
-        </div>
+    <main>
+      <div class="container">
+        <form class="feedback-form" aria-describedby="form-status" novalidate>
+            <div class="form-group">
+                <label for="name">Your Name</label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  placeholder="Enter your name"
+                  required
+                  aria-required="true"
+                />
+            </div>
 
-        <div class="form-group">
-          <label for="rating">Rating <span aria-hidden="true">*</span></label>
-          <div
-            class="rating-stars"
-            role="radiogroup"
-            aria-required="true"
-            aria-labelledby="rating-label"
-          >
-            <i class="far fa-star" data-rating="1" tabindex="0" role="radio" aria-checked="false" aria-label="1 star"></i>
-            <i class="far fa-star" data-rating="2" tabindex="-1" role="radio" aria-checked="false" aria-label="2 stars"></i>
-            <i class="far fa-star" data-rating="3" tabindex="-1" role="radio" aria-checked="false" aria-label="3 stars"></i>
-            <i class="far fa-star" data-rating="4" tabindex="-1" role="radio" aria-checked="false" aria-label="4 stars"></i>
-            <i class="far fa-star" data-rating="5" tabindex="-1" role="radio" aria-checked="false" aria-label="5 stars"></i>
-          </div>
-          <input type="hidden" id="rating" name="rating" value="0" />
-        </div>
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  placeholder="Enter your email"
+                  required
+                  aria-required="true"
+                />
+            </div>
 
-        <div class="form-group">
-          <label for="comments">Your Feedback <span aria-hidden="true">*</span></label>
-          <textarea
-            id="comments"
-            name="comments"
-            placeholder="Tell us about your experience..."
-            rows="5"
-            aria-required="true"
-          ></textarea>
-        </div>
+            <div class="form-group">
+                <label for="rating">Rating</label>
+                <div class="rating-stars" role="radiogroup" aria-labelledby="rating-label">
+                    <i
+                      class="far fa-star"
+                      data-rating="1"
+                      role="radio"
+                      tabindex="0"
+                      aria-checked="false"
+                      aria-label="1 star"
+                    ></i>
+                    <i
+                      class="far fa-star"
+                      data-rating="2"
+                      role="radio"
+                      tabindex="-1"
+                      aria-checked="false"
+                      aria-label="2 stars"
+                    ></i>
+                    <i
+                      class="far fa-star"
+                      data-rating="3"
+                      role="radio"
+                      tabindex="-1"
+                      aria-checked="false"
+                      aria-label="3 stars"
+                    ></i>
+                    <i
+                      class="far fa-star"
+                      data-rating="4"
+                      role="radio"
+                      tabindex="-1"
+                      aria-checked="false"
+                      aria-label="4 stars"
+                    ></i>
+                    <i
+                      class="far fa-star"
+                      data-rating="5"
+                      role="radio"
+                      tabindex="-1"
+                      aria-checked="false"
+                      aria-label="5 stars"
+                    ></i>
+                </div>
+                <input type="hidden" id="rating" name="rating" value="0" />
+            </div>
 
-        <button type="submit" class="submit-feedback">Submit Feedback</button>
+            <div class="form-group">
+                <label for="comments">Your Feedback</label>
+                <textarea
+                  id="comments"
+                  name="comments"
+                  placeholder="Tell us about your experience..."
+                  rows="5"
+                  required
+                  aria-required="true"
+                ></textarea>
+            </div>
 
-        <div id="form-status" aria-live="polite" class="sr-only"></div>
-      </form>
-      <div id="form-status" class="sr-only" aria-live="polite" aria-atomic="true"></div>
-    </section>
-  </main>
+            <button type="submit" class="submit-feedback">Submit Feedback</button>
+        </form>
 
-  <footer>
-    <a href="index.html" class="back-to-menu">
-      <i class="fas fa-arrow-left"></i> Back to Menu
-    </a>
-  </footer>
+        <!-- Screen reader only live region for status messages -->
+        <div id="form-status" class="sr-only" aria-live="polite" aria-atomic="true"></div>
+      </div>
+    </main>
 
-  <script src="js/feedback.js"></script>
+    <footer>
+        <a href="index.html" class="back-to-menu">
+            <i class="fas fa-arrow-left"></i> Back to Menu
+        </a>
+    </footer>
+
+    <script src="js/feedback.js"></script>
 </body>
 </html>
