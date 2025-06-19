@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', function() {
         cartOverlay.addEventListener('click', toggleCart);
         closeCart.addEventListener('click', toggleCart);
 
-        // Add to cart buttons
+        // Add to cart buttons - FIXED THIS SECTION
         document.querySelectorAll('.add-to-cart').forEach(button => {
             button.addEventListener('click', function() {
                 const menuItem = this.closest('.menu-item');
@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
 
-        // Feedback button - redirect to feedback.html
+        // Feedback button
         feedbackBtn.addEventListener('click', function() {
             window.location.href = 'feedback.html';
         });
@@ -113,20 +113,20 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Show instructions modal
+    // Show instructions modal - FIXED THIS FUNCTION
     function showInstructionsModal() {
         document.getElementById('special-instructions').value = '';
         instructionsModal.classList.remove('hidden');
         document.body.style.overflow = 'hidden';
     }
 
-    // Hide instructions modal
+    // Hide instructions modal - FIXED THIS FUNCTION
     function hideInstructionsModal() {
         instructionsModal.classList.add('hidden');
         document.body.style.overflow = '';
     }
 
-    // Add item to cart with instructions
+    // Add item to cart with instructions - FIXED THIS FUNCTION
     function addToCartWithInstructions() {
         const instructions = document.getElementById('special-instructions').value;
         currentItemToAdd.instructions = instructions;
