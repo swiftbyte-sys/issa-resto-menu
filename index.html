@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Issa Delights - Menu</title>
     <link
       rel="stylesheet"
@@ -11,20 +11,22 @@
     <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-    <header>
-        <div class="container header-container">
+    <header class="header-container">
+        <div class="container">
             <h1>Issa Delights</h1>
             <p>Discover our exquisite menu selections</p>
         </div>
     </header>
 
     <main class="container">
-        <div class="search-bar">
+         <div class="search-bar">
             <input
               type="text"
               class="search-input"
               placeholder="Search menu items..."
+              aria-label="Search menu items"
             />
+            <i class="fas fa-search search-icon"></i>
         </div>
 
         <div class="menu-categories">
@@ -307,21 +309,20 @@
             </div>
         </div>
     </main>
-
     <!-- Cart Toggle Button -->
-    <div class="cart-toggle">
+    <button class="cart-toggle" aria-label="View cart">
         <i class="fas fa-shopping-cart"></i>
         <span class="cart-badge" id="cart-badge">0</span>
-    </div>
+    </button>
 
     <!-- Cart Overlay -->
     <div id="cart-overlay" class="cart-overlay hidden"></div>
 
     <!-- Cart Section -->
-    <section id="cart-section" class="cart-section hidden">
+    <section id="cart-section" class="cart-section hidden" aria-modal="true" aria-labelledby="cart-title">
         <div class="cart-header">
-            <h3>Your Order</h3>
-            <button class="close-cart">&times;</button>
+            <h3 id="cart-title">Your Order</h3>
+            <button class="close-cart" aria-label="Close cart">&times;</button>
         </div>
         <div id="cart-items" class="cart-items">
             <div class="empty-cart-message">Your cart is empty</div>
@@ -334,8 +335,8 @@
 
     <!-- Feedback Button -->
     <div class="feedback-btn-container">
-        <button class="feedback-btn" id="feedback-btn">
-            <i class="fas fa-comment-alt"></i> Give Feedback
+        <button class="feedback-btn" id="feedback-btn" aria-label="Provide feedback">
+            <i class="fas fa-comment-alt"></i> <span class="feedback-text">Give Feedback</span>
         </button>
     </div>
 
@@ -352,23 +353,24 @@
     </footer>
 
     <!-- Special Instructions Modal -->
-    <div id="instructions-modal" class="modal-overlay hidden">
+    <div id="instructions-modal" class="modal-overlay hidden" aria-modal="true" aria-labelledby="instructions-title">
         <div class="modal-content">
             <div class="modal-header">
-                <h3>Add Special Instructions</h3>
-                <button class="close-modal">&times;</button>
+                <h3 id="instructions-title">Add Special Instructions</h3>
+                <button class="close-modal" aria-label="Close instructions modal">&times;</button>
             </div>
             <div class="modal-body">
                 <textarea
                   id="special-instructions"
                   placeholder="E.g. No onions, extra spicy, etc."
                   rows="4"
+                  aria-label="Special instructions for menu item"
                 ></textarea>
                 <button class="submit-instructions">Add to Cart</button>
             </div>
         </div>
     </div>
 
-    <script src="js/script.js"></script>
+    <script src="js/script.js" defer></script>
 </body>
 </html>
