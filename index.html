@@ -4,15 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Issa Delights - Menu</title>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-    <header class="header-container">
-        <div class="container">
+    <header>
+        <div class="container header-container">
             <h1>Issa Delights</h1>
             <p>Discover our exquisite menu selections</p>
         </div>
@@ -307,7 +304,13 @@
                 </div>
             </div>
         </div>
+        <div class="feedback-section">
+            <button class="feedback-btn" id="feedback-btn">
+                <i class="fas fa-comment-alt"></i> Give Feedback
+            </button>
+        </div>
     </main>
+
     <!-- Cart Toggle Button -->
     <button class="cart-toggle" aria-label="View cart">
         <i class="fas fa-shopping-cart"></i>
@@ -318,10 +321,10 @@
     <div id="cart-overlay" class="cart-overlay hidden"></div>
 
     <!-- Cart Section -->
-    <section id="cart-section" class="cart-section hidden" aria-modal="true" aria-labelledby="cart-title">
+    <section id="cart-section" class="cart-section hidden">
         <div class="cart-header">
-            <h3 id="cart-title">Your Order</h3>
-            <button class="close-cart" aria-label="Close cart">&times;</button>
+            <h3>Your Order</h3>
+            <button class="close-cart">&times;</button>
         </div>
         <div id="cart-items" class="cart-items">
             <div class="empty-cart-message">Your cart is empty</div>
@@ -332,44 +335,26 @@
         <button class="checkout-btn">Proceed to Checkout</button>
     </section>
 
-    <!-- Feedback Button -->
-    <div class="feedback-btn-container">
-        <button class="feedback-btn" id="feedback-btn" aria-label="Provide feedback">
-            <i class="fas fa-comment-alt"></i> <span class="feedback-text">Give Feedback</span>
-        </button>
-    </div>
-
-    <footer>
-        Menu designed by
-        <a
-          href="https://swiftbyte-sys.github.io/repo/"
-          target="_blank"
-          class="swiftbyte-brand"
-          rel="noopener noreferrer"
-          >SwiftByte</a
-        >
-        | 📞 <a href="tel:78986115">78986115</a>
-    </footer>
-
     <!-- Special Instructions Modal -->
-    <div id="instructions-modal" class="modal-overlay hidden" aria-modal="true" aria-labelledby="instructions-title">
+    <div id="instructions-modal" class="modal-overlay hidden">
         <div class="modal-content">
             <div class="modal-header">
-                <h3 id="instructions-title">Add Special Instructions</h3>
-                <button class="close-modal" aria-label="Close instructions modal">&times;</button>
+                <h3>Add Special Instructions</h3>
+                <button class="close-modal">&times;</button>
             </div>
             <div class="modal-body">
-                <textarea
-                  id="special-instructions"
-                  placeholder="E.g. No onions, extra spicy, etc."
-                  rows="4"
-                  aria-label="Special instructions for menu item"
-                ></textarea>
+                <textarea id="special-instructions" placeholder="E.g. No onions, extra spicy, etc." rows="4"></textarea>
                 <button class="submit-instructions">Add to Cart</button>
             </div>
         </div>
     </div>
 
-    <script src="js/script.js" defer></script>
+    <footer>
+        Menu designed by
+        <a href="https://swiftbyte-sys.github.io/repo/" target="_blank" class="swiftbyte-brand">SwiftByte</a>
+        | 📞 <a href="tel:78986115">78986115</a>
+    </footer>
+
+    <script src="js/script.js"></script>
 </body>
 </html>
