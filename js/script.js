@@ -5,9 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     categoryButtons.forEach(button => {
         button.addEventListener('click', () => {
-            // Remove active class from all buttons
             categoryButtons.forEach(btn => btn.classList.remove('active'));
-            // Add active class to clicked button
             button.classList.add('active');
             
             const category = button.dataset.category;
@@ -56,6 +54,9 @@ document.addEventListener('DOMContentLoaded', function() {
     const specialInstructions = document.getElementById('special-instructions');
     const closeModalBtn = document.querySelector('.close-modal');
     const submitInstructionsBtn = document.querySelector('.submit-instructions');
+    
+    // Feedback button
+    const feedbackBtn = document.getElementById('feedback-btn');
     
     let cart = [];
     let currentItem = null;
@@ -108,16 +109,13 @@ document.addEventListener('DOMContentLoaded', function() {
         const itemPrice = parseFloat(currentItem.querySelector('.item-price').textContent.replace('$', ''));
         const instructions = specialInstructions.value.trim();
         
-        // Check if identical item (same name and instructions) already exists
         const existingItemIndex = cart.findIndex(item => 
             item.name === itemName && item.instructions === instructions
         );
         
         if (existingItemIndex !== -1) {
-            // Increase quantity if same item with same instructions exists
             cart[existingItemIndex].quantity += 1;
         } else {
-            // Add new item to cart
             cart.push({
                 name: itemName,
                 price: itemPrice,
@@ -133,7 +131,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     function updateCart() {
-        // Clear cart display
         cartItemsContainer.innerHTML = '';
         
         if (cart.length === 0) {
@@ -143,7 +140,6 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
         
-        // Add each item to cart display
         let total = 0;
         let itemCount = 0;
         
@@ -151,7 +147,6 @@ document.addEventListener('DOMContentLoaded', function() {
             const cartItemElement = document.createElement('div');
             cartItemElement.className = 'cart-item';
             
-            // Add instructions if they exist
             let instructionsHTML = '';
             if (item.instructions) {
                 instructionsHTML = `<div class="cart-item-instructions">${item.instructions}</div>`;
@@ -209,7 +204,6 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
         
-        // Update cart badge and total
         cartBadge.textContent = itemCount;
         cartTotal.textContent = total.toFixed(2);
         cartBadge.style.display = 'flex';
@@ -225,5 +219,10 @@ document.addEventListener('DOMContentLoaded', function() {
             updateCart();
             toggleCart(false);
         }
+    });
+    
+    // Feedback button - redirect to feedback page
+    feedbackBtn.addEventListener('click', () => {
+        window.location.href = 'feedback.html';
     });
 });
