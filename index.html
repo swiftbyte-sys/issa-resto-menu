@@ -317,37 +317,35 @@
         <span class="cart-badge" id="cart-badge">0</span>
     </button>
 
-    <!-- Cart Overlay -->
-    <div id="cart-overlay" class="cart-overlay hidden"></div>
+    <!-- Cart Overlay and Section -->
+<div id="cart-overlay"></div>
+<section id="cart-section">
+    <div class="cart-header">
+        <h3>Your Order</h3>
+        <button class="close-cart">&times;</button>
+    </div>
+    <div id="cart-items" class="cart-items">
+        <div class="empty-cart-message">Your cart is empty</div>
+    </div>
+    <div class="cart-total">
+        Total: $<span id="cart-total">0.00</span>
+    </div>
+    <button class="checkout-btn">Proceed to Checkout</button>
+</section>
 
-    <!-- Cart Section -->
-    <section id="cart-section" class="cart-section hidden">
-        <div class="cart-header">
-            <h3>Your Order</h3>
-            <button class="close-cart">&times;</button>
+    <!-- Instructions Modal -->
+<div id="instructions-modal">
+    <div class="modal-content">
+        <button class="close-modal">&times;</button>
+        <div class="modal-header">
+            <h3>Special Instructions</h3>
         </div>
-        <div id="cart-items" class="cart-items">
-            <div class="empty-cart-message">Your cart is empty</div>
-        </div>
-        <div class="cart-total">
-            Total: $<span id="cart-total">0.00</span>
-        </div>
-        <button class="checkout-btn">Proceed to Checkout</button>
-    </section>
-
-    <!-- Special Instructions Modal -->
-    <div id="instructions-modal" class="modal-overlay hidden">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3>Add Special Instructions</h3>
-                <button class="close-modal">&times;</button>
-            </div>
-            <div class="modal-body">
-                <textarea id="special-instructions" placeholder="E.g. No onions, extra spicy, etc." rows="4"></textarea>
-                <button class="submit-instructions">Add to Cart</button>
-            </div>
+        <div class="modal-body">
+            <textarea id="special-instructions" placeholder="Any special requests?"></textarea>
+            <button class="submit-instructions">Add to Cart</button>
         </div>
     </div>
+</div>
 
     <footer>
         Menu designed by
