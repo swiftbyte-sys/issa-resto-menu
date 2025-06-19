@@ -1,28 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Issa Delights - Menu</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <header>
-        <div class="container header-container">
+        <div class="container">
             <h1>Issa Delights</h1>
             <p>Discover our exquisite menu selections</p>
         </div>
     </header>
 
     <main class="container">
-         <div class="search-bar">
-            <input
-              type="text"
-              class="search-input"
-              placeholder="Search menu items..."
-              aria-label="Search menu items"
-            />
+        <div class="search-bar">
+            <input type="text" class="search-input" placeholder="Search menu items...">
+            <i class="fas fa-search search-icon"></i>
         </div>
 
         <div class="menu-categories">
@@ -35,7 +31,7 @@
 
         <div class="menu-items">
             <!-- Starters -->
-            <div class="menu-item" data-category="starters">
+           <div class="menu-item" data-category="starters">
                 <img
                   src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd"
                   alt="Fresh Salad"
@@ -304,6 +300,7 @@
                 </div>
             </div>
         </div>
+
         <div class="feedback-section">
             <button class="feedback-btn" id="feedback-btn">
                 <i class="fas fa-comment-alt"></i> Give Feedback
@@ -312,45 +309,45 @@
     </main>
 
     <!-- Cart Toggle Button -->
-    <button class="cart-toggle" aria-label="View cart">
+    <button class="cart-toggle">
         <i class="fas fa-shopping-cart"></i>
         <span class="cart-badge" id="cart-badge">0</span>
     </button>
 
-    <!-- Cart Overlay and Section -->
-<div id="cart-overlay"></div>
-<section id="cart-section">
-    <div class="cart-header">
-        <h3>Your Order</h3>
-        <button class="close-cart">&times;</button>
-    </div>
-    <div id="cart-items" class="cart-items">
-        <div class="empty-cart-message">Your cart is empty</div>
-    </div>
-    <div class="cart-total">
-        Total: $<span id="cart-total">0.00</span>
-    </div>
-    <button class="checkout-btn">Proceed to Checkout</button>
-</section>
-
     <!-- Instructions Modal -->
-<div id="instructions-modal">
-    <div class="modal-content">
-        <button class="close-modal">&times;</button>
-        <div class="modal-header">
-            <h3>Special Instructions</h3>
-        </div>
-        <div class="modal-body">
-            <textarea id="special-instructions" placeholder="Any special requests?"></textarea>
-            <button class="submit-instructions">Add to Cart</button>
+    <div id="instructions-modal">
+        <div class="modal-content">
+            <button class="close-modal">&times;</button>
+            <div class="modal-header">
+                <h3>Special Instructions</h3>
+            </div>
+            <div class="modal-body">
+                <textarea id="special-instructions" placeholder="Any special requests?"></textarea>
+                <button class="submit-instructions">Add to Cart</button>
+            </div>
         </div>
     </div>
-</div>
+
+    <!-- Cart Overlay and Section -->
+    <div id="cart-overlay"></div>
+    <section id="cart-section">
+        <div class="cart-header">
+            <h3>Your Order</h3>
+            <button class="close-cart">&times;</button>
+        </div>
+        <div id="cart-items" class="cart-items">
+            <div class="empty-cart-message">Your cart is empty</div>
+        </div>
+        <div class="cart-total">
+            Total: $<span id="cart-total">0.00</span>
+        </div>
+        <button class="checkout-btn">Proceed to Checkout</button>
+    </section>
 
     <footer>
-        Menu designed by
-        <a href="https://swiftbyte-sys.github.io/repo/" target="_blank" class="swiftbyte-brand">SwiftByte</a>
-        | 📞 <a href="tel:78986115">78986115</a>
+        <a href="index.html" class="back-to-menu">
+            <i class="fas fa-arrow-left"></i> Back to Menu
+        </a>
     </footer>
 
     <script src="js/script.js"></script>
